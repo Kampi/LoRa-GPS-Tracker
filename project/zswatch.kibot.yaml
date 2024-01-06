@@ -1,6 +1,11 @@
 kibot:
   version: 1
 
+variants:
+  - name: "Tracker"
+    comment: "Regular Tracker PCB"
+    type: kibom
+
 global:
   out_dir: "../production/Export-%D"
   date_format: "%Y-%m-%d"
@@ -62,12 +67,6 @@ outputs:
       - layer: F.Cu
         suffix: F_Cu
         description: Front copper
-      - layer: Inner1
-        suffix: Layer1
-        description: 'Inner cooper layer'
-      - layer: Inner1
-        suffix: Layer2
-        description: 'Inner copper layer'
       - layer: B.Cu
         suffix: B_Cu
         description: Bottom copper

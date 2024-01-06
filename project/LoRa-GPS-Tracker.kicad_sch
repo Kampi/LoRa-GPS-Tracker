@@ -5,8 +5,8 @@
   (paper "A3")
 
   (title_block
-    (title "LoRa GPS-Tracker")
-    (date "2023-01-01")
+    (title "LoRa-GPS-Tracker")
+    (date "2024-01-07")
     (rev "1.0")
     (company "Kampis-Elektroecke")
     (comment 4 "Author: Ing. Daniel Kampert")

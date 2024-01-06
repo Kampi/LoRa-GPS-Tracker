@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-22.04
 
     env:
-      KICAD_LIBRARY: /home/runner/work/ZSWatch-HW/ZSWatch-HW/ZSWatch-HW/library
+      KICAD_LIBRARY: /home/runner/work/LoRa-GPS-Tracker/LoRa-GPS-Tracker/LoRa-GPS-Tracker/library
     strategy:
       matrix:
-        device_type: [Watch, Sensor]
+        device_type: [Tracker]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: ZSWatch-HW
+          path: LoRa-GPS-Tracker
           submodules: recursive
 
       - name: Dependencies
@@ -36,7 +36,7 @@ jobs:
           sudo apt install --install-recommends kicad
 
       - name: Initialize
-        working-directory: ZSWatch-HW
+        working-directory: LoRa-GPS-Tracker
         run: |
           mkdir production
           git clone https://github.com/Kampi/KiCad.git library
@@ -45,7 +45,7 @@ jobs:
 
       - name: Generate files
         run: |
-          cd ZSWatch-HW/project
+          cd LoRa-GPS-Tracker/project
           kibot -g variant=${{ matrix.device_type }} -d ../production/${{ matrix.device_type }}
       
       - name: Upload Results
@@ -53,5 +53,5 @@ jobs:
         with:
           name: ${{ matrix.device_type }}
           path: |
-            ZSWatch-HW/production
+            LoRa-GPS-Tracker/production
           if-no-files-found: ignore
