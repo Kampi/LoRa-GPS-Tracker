@@ -28,7 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdint.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -91,7 +91,9 @@ extern "C" {
 void SubghzApp_Init(void);
 
 /* USER CODE BEGIN EFP */
+int32_t SubghzApp_Transmit(const uint8_t* p_Buffer, uint8_t Length);
 
+void SubghzApp_Sleep(void);
 /* USER CODE END EFP */
 
 #ifdef __cplusplus

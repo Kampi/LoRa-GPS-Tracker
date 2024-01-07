@@ -3,7 +3,7 @@
   ******************************************************************************
   * @file    subghz_phy_app.c
   * @author  MCD Application Team
-  * @brief   Application of the SubGHz_Phy Middleware
+  * @brief
   ******************************************************************************
   * @attention
   *
@@ -58,6 +58,8 @@
 /* Radio events function pointer */
 static RadioEvents_t RadioEvents;
 
+/* USER CODE BEGIN PV */
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,6 +101,7 @@ void SubghzApp_Init(void)
   /* USER CODE BEGIN SubghzApp_Init_1 */
 
   APP_LOG(TS_OFF, VLEVEL_M, "\n\r APRS Demo\n\r");
+
   /* Get SubGHY_Phy APP version*/
   APP_LOG(TS_OFF, VLEVEL_M, "APPLICATION_VERSION: V%X.%X.%X\r\n",
           (uint8_t)(APP_VERSION_MAIN),
@@ -127,10 +130,11 @@ void SubghzApp_Init(void)
   Radio.SetChannel(RF_FREQUENCY);
 
   /* Radio configuration */
-  APP_LOG(TS_OFF, VLEVEL_M, "---------------\n\r");
-  APP_LOG(TS_OFF, VLEVEL_M, "LORA_MODULATION\n\r");
-  APP_LOG(TS_OFF, VLEVEL_M, "LORA_BW=%d kHz\n\r", (1 << LORA_BANDWIDTH) * 125);
-  APP_LOG(TS_OFF, VLEVEL_M, "LORA_SF=%d\n\r", LORA_SPREADING_FACTOR);
+  APP_LOG(TS_OFF, VLEVEL_M, "\n\r");
+  APP_LOG(TS_OFF, VLEVEL_M, "Radio settings\n\r");
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Bandwidth=%d kHz\n\r", (1 << LORA_BANDWIDTH) * 125);
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Spreading factor=%d\n\r", LORA_SPREADING_FACTOR);
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Frequency=%d\n\r", RF_FREQUENCY);
 
   Radio.SetTxConfig(MODEM_LORA, TX_OUTPUT_POWER, 0, LORA_BANDWIDTH,
                     LORA_SPREADING_FACTOR, LORA_CODINGRATE,
@@ -143,21 +147,30 @@ void SubghzApp_Init(void)
                     0, true, 0, 0, LORA_IQ_INVERSION_ON, true);
 
   Radio.SetMaxPayloadLength(MODEM_LORA, MAX_APP_BUFFER_SIZE);
-
-
-	uint8_t Buffer[] = {
-			0x3C, 0xFF, 0x01, 0x44, 0x4F, 0x32, 0x44, 0x4B,
-			0x48, 0x2D, 0x37, 0x3E, 0x41, 0x50, 0x4C, 0x47,
-			0x30, 0x31, 0x3A, 0x21, 0x34, 0x39, 0x33, 0x32,
-			0x2E, 0x30, 0x35, 0x4E, 0x4C, 0x30, 0x31, 0x30,
-			0x34, 0x37, 0x2E, 0x35, 0x30, 0x45, 0x26, 0x54,
-			0x65, 0x73, 0x74, 0x32
-	};
-	radio_status_t status = Radio.Send(Buffer, sizeof(Buffer));
+  Radio.Sleep();
   /* USER CODE END SubghzApp_Init_2 */
 }
 
 /* USER CODE BEGIN EF */
+int32_t SubghzApp_Transmit(const uint8_t* p_Buffer, uint8_t Length)
+{
+	if (Length > MAX_APP_BUFFER_SIZE)
+	{
+		return -1;
+	}
+
+	if (Radio.Send((uint8_t*)p_Buffer, Length) != RADIO_STATUS_OK)
+	{
+		return -1;
+	}
+
+	return 0;
+}
+
+void SubghzApp_Sleep(void)
+{
+	Radio.Sleep();
+}
 
 /* USER CODE END EF */
 
