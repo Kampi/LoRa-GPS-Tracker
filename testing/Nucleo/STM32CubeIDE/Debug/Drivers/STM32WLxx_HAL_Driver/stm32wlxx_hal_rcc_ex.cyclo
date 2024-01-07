@@ -1,0 +1,15 @@
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1075:17:RCC_PLL_GetFreqDomain_P	11
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1125:17:RCC_PLL_GetFreqDomain_Q	11
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:113:19:HAL_RCCEx_PeriphCLKConfig	25
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:345:6:HAL_RCCEx_GetPeriphCLKConfig	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:416:10:HAL_RCCEx_GetPeriphCLKFreq	88
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:928:6:HAL_RCCEx_WakeUpStopCLKConfig	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:942:6:HAL_RCCEx_EnableLSECSS	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:952:6:HAL_RCCEx_DisableLSECSS	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:968:6:HAL_RCCEx_EnableLSECSS_IT	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1003:13:HAL_RCCEx_LSECSS_Callback	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:988:6:HAL_RCCEx_LSECSS_IRQHandler	2
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1018:6:HAL_RCCEx_EnableLSCO	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1031:6:HAL_RCCEx_DisableLSCO	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1043:6:HAL_RCCEx_EnableMSIPLLMode	1
+F:/Git/LoRa-GPS-Tracker/testing/Nucleo/Drivers/STM32WLxx_HAL_Driver/Src/stm32wlxx_hal_rcc_ex.c:1053:6:HAL_RCCEx_DisableMSIPLLMode	1
