@@ -28,7 +28,6 @@
 #include "stm32_timer.h"
 #include "stm32_seq.h"
 #include "utilities_def.h"
-#include "app_version.h"
 #include "subghz_phy_version.h"
 /* USER CODE END Includes */
 
@@ -99,21 +98,11 @@ static void OnRxError(void);
 void SubghzApp_Init(void)
 {
   /* USER CODE BEGIN SubghzApp_Init_1 */
-
-  APP_LOG(TS_OFF, VLEVEL_M, "\n\r APRS Demo\n\r");
-
-  /* Get SubGHY_Phy APP version*/
-  APP_LOG(TS_OFF, VLEVEL_M, "APPLICATION_VERSION: V%X.%X.%X\r\n",
-          (uint8_t)(APP_VERSION_MAIN),
-          (uint8_t)(APP_VERSION_SUB1),
-          (uint8_t)(APP_VERSION_SUB2));
-
   /* Get MW SubGhz_Phy info */
-  APP_LOG(TS_OFF, VLEVEL_M, "MW_RADIO_VERSION:    V%X.%X.%X\r\n",
+  APP_LOG(TS_OFF, VLEVEL_M, "Radio version:\tV%X.%X.%X\r\n",
           (uint8_t)(SUBGHZ_PHY_VERSION_MAIN),
           (uint8_t)(SUBGHZ_PHY_VERSION_SUB1),
           (uint8_t)(SUBGHZ_PHY_VERSION_SUB2));
-
   /* USER CODE END SubghzApp_Init_1 */
 
   /* Radio initialization */
@@ -132,9 +121,9 @@ void SubghzApp_Init(void)
   /* Radio configuration */
   APP_LOG(TS_OFF, VLEVEL_M, "\n\r");
   APP_LOG(TS_OFF, VLEVEL_M, "Radio settings\n\r");
-  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Bandwidth=%d kHz\n\r", (1 << LORA_BANDWIDTH) * 125);
-  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Spreading factor=%d\n\r", LORA_SPREADING_FACTOR);
-  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Frequency=%d\n\r", RF_FREQUENCY);
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Bandwidth: %d kHz\n\r", (1 << LORA_BANDWIDTH) * 125);
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Spreading factor: %d\n\r", LORA_SPREADING_FACTOR);
+  APP_LOG(TS_OFF, VLEVEL_M, "\tLoRa Frequency: %d\n\r", RF_FREQUENCY);
 
   Radio.SetTxConfig(MODEM_LORA, TX_OUTPUT_POWER, 0, LORA_BANDWIDTH,
                     LORA_SPREADING_FACTOR, LORA_CODINGRATE,

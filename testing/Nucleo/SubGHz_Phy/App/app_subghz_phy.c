@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "usart.h"
 #include "rtc.h"
+#include "app_version.h"
 /* USER CODE END Includes */
 
 /* External variables ---------------------------------------------------------*/
@@ -66,6 +67,7 @@ static uint8_t APRS_Header[] = {'<', 0xFF, 0x01};
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
 static int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char* p_Message);
+static void MX_SubGHz_Phy_EnterSleep(void);
 /* USER CODE END PFP */
 
 /* Exported functions --------------------------------------------------------*/
@@ -73,11 +75,16 @@ static int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsig
 void MX_SubGHz_Phy_Init(void)
 {
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_1 */
-
   /* USER CODE END MX_SubGHz_Phy_Init_1 */
   SystemApp_Init();
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_1_1 */
+  APP_LOG(TS_OFF, VLEVEL_M, "\n\rAPRS Demo\n\r");
 
+  /* Get SubGHY_Phy APP version*/
+  APP_LOG(TS_OFF, VLEVEL_M, "Application version:\tV%X.%X.%X\r\n",
+          (uint8_t)(APP_VERSION_MAIN),
+          (uint8_t)(APP_VERSION_SUB1),
+          (uint8_t)(APP_VERSION_SUB2));
   /* USER CODE END MX_SubGHz_Phy_Init_1_1 */
   SubghzApp_Init();
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_2 */
@@ -123,8 +130,9 @@ void MX_SubGHz_Phy_Process(void)
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude: %s\n\r", GPGGA_Data.lon);
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude direction: %s\n\r", GPGGA_Data.lon_dir);
 		  MX_SubGHz_Phy_APRS_Send(&GPGGA_Data, "DO2DKH-1", "Test123");
+		  HAL_Delay(100);
 
-		  //HAL_PWR_EnterSTANDBYMode();
+		  MX_SubGHz_Phy_EnterSleep();
 	  }
 	}
 
@@ -141,6 +149,29 @@ void MX_SubGHz_Phy_Process(void)
 
 /* Private Functions Definition -----------------------------------------------*/
 /* USER CODE BEGIN PrFD */
+void MX_SubGHz_Phy_EnterSleep(void)
+{
+  UART_WakeUpTypeDef WakeUpSelection;
+
+  SubghzApp_Sleep();
+
+  // Make sure that no LPUART transfer is on-going
+  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_BUSY) == SET);
+  // Make sure that LPUART is ready to receive
+  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_REACK) == RESET);
+
+  // Set the wake-up event
+  WakeUpSelection.WakeUpEvent = UART_WAKEUP_ON_READDATA_NONEMPTY;
+  if (HAL_UARTEx_StopModeWakeUpSourceConfig(&hlpuart1, WakeUpSelection) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  __HAL_UART_ENABLE_IT(&hlpuart1, UART_IT_WUF);
+  HAL_UARTEx_EnableStopMode(&hlpuart1);
+  HAL_PWR_EnterSTANDBYMode();
+}
+
 int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char* p_Message)
 {
 	uint8_t TotalLength = 0;
