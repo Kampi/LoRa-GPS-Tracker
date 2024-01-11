@@ -59,7 +59,7 @@
 static RadioEvents_t RadioEvents;
 
 /* USER CODE BEGIN PV */
-
+static bool TxDone;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -159,10 +159,13 @@ int32_t SubghzApp_Transmit(const uint8_t* p_Buffer, uint8_t Length)
 		return -1;
 	}
 
+	TxDone = false;
 	if (Radio.Send((uint8_t*)p_Buffer, Length) != RADIO_STATUS_OK)
 	{
 		return -1;
 	}
+
+	while (TxDone == false);
 
 	return 0;
 }
@@ -179,6 +182,7 @@ static void OnTxDone(void)
 {
   /* USER CODE BEGIN OnTxDone */
   APP_LOG(TS_ON, VLEVEL_L, "OnTxDone\n\r");
+  TxDone = true;
   /* USER CODE END OnTxDone */
 }
 

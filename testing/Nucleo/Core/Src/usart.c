@@ -24,54 +24,54 @@
 
 /* USER CODE END 0 */
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef hlpuart1;
 UART_HandleTypeDef huart2;
 DMA_HandleTypeDef hdma_usart2_tx;
 
-/* USART1 init function */
+/* LPUART1 init function */
 
-void MX_USART1_UART_Init(void)
+void MX_LPUART1_UART_Init(void)
 {
 
-  /* USER CODE BEGIN USART1_Init 0 */
+  /* USER CODE BEGIN LPUART1_Init 0 */
 
-  /* USER CODE END USART1_Init 0 */
+  /* USER CODE END LPUART1_Init 0 */
 
-  /* USER CODE BEGIN USART1_Init 1 */
+  /* USER CODE BEGIN LPUART1_Init 1 */
 
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_RXOVERRUNDISABLE_INIT|UART_ADVFEATURE_DMADISABLEONERROR_INIT;
-  huart1.AdvancedInit.OverrunDisable = UART_ADVFEATURE_OVERRUN_DISABLE;
-  huart1.AdvancedInit.DMADisableonRxError = UART_ADVFEATURE_DMA_DISABLEONRXERROR;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
+  /* USER CODE END LPUART1_Init 1 */
+  hlpuart1.Instance = LPUART1;
+  hlpuart1.Init.BaudRate = 9600;
+  hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
+  hlpuart1.Init.StopBits = UART_STOPBITS_1;
+  hlpuart1.Init.Parity = UART_PARITY_NONE;
+  hlpuart1.Init.Mode = UART_MODE_TX_RX;
+  hlpuart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  hlpuart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+  hlpuart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_RXOVERRUNDISABLE_INIT|UART_ADVFEATURE_DMADISABLEONERROR_INIT;
+  hlpuart1.AdvancedInit.OverrunDisable = UART_ADVFEATURE_OVERRUN_DISABLE;
+  hlpuart1.AdvancedInit.DMADisableonRxError = UART_ADVFEATURE_DMA_DISABLEONRXERROR;
+  hlpuart1.FifoMode = UART_FIFOMODE_DISABLE;
+  if (HAL_UART_Init(&hlpuart1) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetTxFifoThreshold(&hlpuart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetRxFifoThreshold(&hlpuart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_DisableFifoMode(&huart1) != HAL_OK)
+  if (HAL_UARTEx_DisableFifoMode(&hlpuart1) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN USART1_Init 2 */
+  /* USER CODE BEGIN LPUART1_Init 2 */
 
-  /* USER CODE END USART1_Init 2 */
+  /* USER CODE END LPUART1_Init 2 */
 
 }
 /* USART2 init function */
@@ -124,42 +124,42 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
-  if(uartHandle->Instance==USART1)
+  if(uartHandle->Instance==LPUART1)
   {
-  /* USER CODE BEGIN USART1_MspInit 0 */
+  /* USER CODE BEGIN LPUART1_MspInit 0 */
 
-  /* USER CODE END USART1_MspInit 0 */
+  /* USER CODE END LPUART1_MspInit 0 */
 
   /** Initializes the peripherals clocks
   */
-    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1;
-    PeriphClkInitStruct.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LPUART1;
+    PeriphClkInitStruct.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_LSE;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();
     }
 
-    /* USART1 clock enable */
-    __HAL_RCC_USART1_CLK_ENABLE();
+    /* LPUART1 clock enable */
+    __HAL_RCC_LPUART1_CLK_ENABLE();
 
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    /**USART1 GPIO Configuration
-    PB7     ------> USART1_RX
-    PB6     ------> USART1_TX
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    /**LPUART1 GPIO Configuration
+    PC1     ------> LPUART1_TX
+    PC0     ------> LPUART1_RX
     */
     GPIO_InitStruct.Pin = GPS_TX_Pin|GPS_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    GPIO_InitStruct.Alternate = GPIO_AF8_LPUART1;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-    /* USART1 interrupt Init */
-    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(USART1_IRQn);
-  /* USER CODE BEGIN USART1_MspInit 1 */
+    /* LPUART1 interrupt Init */
+    HAL_NVIC_SetPriority(LPUART1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(LPUART1_IRQn);
+  /* USER CODE BEGIN LPUART1_MspInit 1 */
 
-  /* USER CODE END USART1_MspInit 1 */
+  /* USER CODE END LPUART1_MspInit 1 */
   }
   else if(uartHandle->Instance==USART2)
   {
@@ -226,25 +226,25 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 {
 
-  if(uartHandle->Instance==USART1)
+  if(uartHandle->Instance==LPUART1)
   {
-  /* USER CODE BEGIN USART1_MspDeInit 0 */
+  /* USER CODE BEGIN LPUART1_MspDeInit 0 */
 
-  /* USER CODE END USART1_MspDeInit 0 */
+  /* USER CODE END LPUART1_MspDeInit 0 */
     /* Peripheral clock disable */
-    __HAL_RCC_USART1_CLK_DISABLE();
+    __HAL_RCC_LPUART1_CLK_DISABLE();
 
-    /**USART1 GPIO Configuration
-    PB7     ------> USART1_RX
-    PB6     ------> USART1_TX
+    /**LPUART1 GPIO Configuration
+    PC1     ------> LPUART1_TX
+    PC0     ------> LPUART1_RX
     */
-    HAL_GPIO_DeInit(GPIOB, GPS_TX_Pin|GPS_RX_Pin);
+    HAL_GPIO_DeInit(GPIOC, GPS_TX_Pin|GPS_RX_Pin);
 
-    /* USART1 interrupt Deinit */
-    HAL_NVIC_DisableIRQ(USART1_IRQn);
-  /* USER CODE BEGIN USART1_MspDeInit 1 */
+    /* LPUART1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(LPUART1_IRQn);
+  /* USER CODE BEGIN LPUART1_MspDeInit 1 */
 
-  /* USER CODE END USART1_MspDeInit 1 */
+  /* USER CODE END LPUART1_MspDeInit 1 */
   }
   else if(uartHandle->Instance==USART2)
   {
@@ -285,7 +285,7 @@ int32_t MX_USART1_GPS_GetLine(char* p_LineBuffer, uint32_t Length)
 	// Wait for the beginning of a line
 	do
 	{
-		if (HAL_UART_Receive(&huart1, &Temp, 1, 10) != HAL_OK)
+		if (HAL_UART_Receive(&hlpuart1, &Temp, 1, 10) != HAL_OK)
 		{
 			return -1;
 		}
@@ -301,7 +301,7 @@ int32_t MX_USART1_GPS_GetLine(char* p_LineBuffer, uint32_t Length)
 	// Receive the remaining bytes
 	do
 	{
-		if (HAL_UART_Receive(&huart1, &Temp, 1, 10) != HAL_OK)
+		if (HAL_UART_Receive(&hlpuart1, &Temp, 1, 10) != HAL_OK)
 		{
 			return -1;
 		}

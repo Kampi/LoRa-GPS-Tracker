@@ -63,6 +63,13 @@ void MX_RTC_Init(void)
   {
     Error_Handler();
   }
+
+  /** Enable the WakeUp
+  */
+  if (HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 10, RTC_WAKEUPCLOCK_CK_SPRE_16BITS, 0) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN RTC_Init 2 */
 
   /* USER CODE END RTC_Init 2 */
@@ -96,6 +103,8 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
     /* RTC interrupt Init */
     HAL_NVIC_SetPriority(TAMP_STAMP_LSECSS_SSRU_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TAMP_STAMP_LSECSS_SSRU_IRQn);
+    HAL_NVIC_SetPriority(RTC_WKUP_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(RTC_WKUP_IRQn);
   /* USER CODE BEGIN RTC_MspInit 1 */
 
   /* USER CODE END RTC_MspInit 1 */
@@ -116,6 +125,7 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
 
     /* RTC interrupt Deinit */
     HAL_NVIC_DisableIRQ(TAMP_STAMP_LSECSS_SSRU_IRQn);
+    HAL_NVIC_DisableIRQ(RTC_WKUP_IRQn);
   /* USER CODE BEGIN RTC_MspDeInit 1 */
 
   /* USER CODE END RTC_MspDeInit 1 */

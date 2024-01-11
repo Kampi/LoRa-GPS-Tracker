@@ -26,6 +26,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "usart.h"
+#include "rtc.h"
 /* USER CODE END Includes */
 
 /* External variables ---------------------------------------------------------*/
@@ -122,11 +123,13 @@ void MX_SubGHz_Phy_Process(void)
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude: %s\n\r", GPGGA_Data.lon);
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude direction: %s\n\r", GPGGA_Data.lon_dir);
 		  MX_SubGHz_Phy_APRS_Send(&GPGGA_Data, "DO2DKH-1", "Test123");
+
+		  //HAL_PWR_EnterSTANDBYMode();
 	  }
 	}
 
   /* USER CODE END MX_SubGHz_Phy_Process_1 */
-  UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
+  //UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
   /* USER CODE BEGIN MX_SubGHz_Phy_Process_2 */
 
   /* USER CODE END MX_SubGHz_Phy_Process_2 */
