@@ -188,7 +188,7 @@ outputs:
     options:
       format: XLSX
       count_smd_tht: true
-      output: "BOM.%x"
+      output: "BOM_PCBWay.%x"
       ref_separator: ','
       columns:
         - field: Row
