@@ -12,7 +12,7 @@ jobs:
       KICAD_LIBRARY: /home/runner/work/LoRa-GPS-Tracker/LoRa-GPS-Tracker/LoRa-GPS-Tracker/library
     strategy:
       matrix:
-        device_type: [Tracker]
+        device_type: [Debug, Full, Minimal]
     steps:
       - name: Checkout
         uses: actions/checkout@v3

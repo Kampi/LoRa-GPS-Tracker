@@ -2,13 +2,18 @@ kibot:
   version: 1
 
 variants:
-  - name: "Full"
-    comment: "Full Tracker PCB"
+  - name: "Debug"
+    comment: "Full Tracker PCB with SWD connector"
     type: kibom
+    variant: DEBUG
+  - name: "Full"
+    comment: "Full Tracker PCB without SWD connector"
+    type: kibom
+    variant: FULL
   - name: "Minimal"
     comment: "Reduced tracker PCB without serial interface"
     type: kibom
-    variant: Minimal
+    variant: MINIMAL
 
 global:
   out_dir: "../production/Export-%D"
@@ -179,6 +184,7 @@ outputs:
   - name: "BOM for PCBWay"
     comment: "BOM for PCBWay"
     type: bom
+    dir: docs
     options:
       format: XLSX
       count_smd_tht: true
