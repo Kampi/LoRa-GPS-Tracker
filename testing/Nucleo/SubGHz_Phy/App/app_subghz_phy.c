@@ -25,9 +25,11 @@
 #include "stm32_seq.h"
 
 /* USER CODE BEGIN Includes */
+#include "main.h"
 #include "usart.h"
 #include "rtc.h"
 #include "app_version.h"
+#include "stm32wlxx_hal_rcc.h"
 /* USER CODE END Includes */
 
 /* External variables ---------------------------------------------------------*/
@@ -43,6 +45,7 @@ typedef struct {
 	char lat_dir[2];
 	char lon[11];
 	char lon_dir[2];
+	uint8_t Quality;
 } GPS_GPGGA_t;
 /* USER CODE END PTD */
 
@@ -58,6 +61,7 @@ typedef struct {
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+static char APRS_Callsign[] = "DO2DKH-1";
 static char APRS_Destination[] = "APLG01";
 
 static uint8_t APRS_TransmitBuffer[255];
@@ -75,6 +79,7 @@ static void MX_SubGHz_Phy_EnterSleep(void);
 void MX_SubGHz_Phy_Init(void)
 {
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_1 */
+	uint32_t InitCounter = 1;
   /* USER CODE END MX_SubGHz_Phy_Init_1 */
   SystemApp_Init();
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_1_1 */
@@ -89,7 +94,39 @@ void MX_SubGHz_Phy_Init(void)
   SubghzApp_Init();
   /* USER CODE BEGIN MX_SubGHz_Phy_Init_2 */
 
-  UTIL_SEQ_Init();
+  // Run the device initialization when a PoR or Pin reset has happened.
+  if (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST) || __HAL_RCC_GET_FLAG(RCC_FLAG_PINRST))
+  {
+    APP_LOG(TS_OFF, VLEVEL_M, "Device reset...\n\r");
+
+    do {
+      APP_LOG(TS_OFF, VLEVEL_M, "Initialize GPS module. Attempt %u\n\r", InitCounter);
+      InitCounter++;
+
+      if (InitCounter > 10)
+      {
+      	Error_Handler();
+      }
+    } while (MX_USART1_GPS_Init() != HAL_OK);
+
+    APP_LOG(TS_OFF, VLEVEL_M, "Initialization successful!\n\r");
+
+    for (uint8_t i = 0; i < 4; i++)
+    {
+      HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_SET);
+      HAL_Delay(100);
+      HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_RESET);
+      HAL_Delay(100);
+    }
+
+    __HAL_RCC_CLEAR_RESET_FLAGS();
+  }
+  else
+  {
+  	APP_LOG(TS_OFF, VLEVEL_M, "Wake up\n\r");
+    MX_USART1_GPS_WakeUp();
+  }
+
   /* USER CODE END MX_SubGHz_Phy_Init_2 */
 }
 
@@ -102,9 +139,11 @@ void MX_SubGHz_Phy_Process(void)
 
 	memset(&GPGGA_Data, 0, sizeof(GPGGA_Data));
 
-	Status = MX_USART1_GPS_GetLine(LineBuffer, sizeof(LineBuffer));
-	if (Status == 0)
+	Status = MX_USART1_GPS_GetNMEA(LineBuffer, sizeof(LineBuffer));
+	if (Status == HAL_OK)
 	{
+	  APP_LOG(TS_OFF, VLEVEL_M, "Message: %s\n\r", LineBuffer);
+
 	  // Format: $GPGGA,174857.000,4932.1285,N,01046.6422,E,2,9,0.90,388.3,M,47.9,M,,*5E
 	  if (strstr(LineBuffer, "$GPGGA") != NULL)
 	  {
@@ -129,7 +168,7 @@ void MX_SubGHz_Phy_Process(void)
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude direction: %s\n\r", GPGGA_Data.lat_dir);
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude: %s\n\r", GPGGA_Data.lon);
 		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude direction: %s\n\r", GPGGA_Data.lon_dir);
-		  MX_SubGHz_Phy_APRS_Send(&GPGGA_Data, "DO2DKH-1", "Test123");
+		  MX_SubGHz_Phy_APRS_Send(&GPGGA_Data, APRS_Callsign, "Test123");
 		  HAL_Delay(100);
 
 		  MX_SubGHz_Phy_EnterSleep();
@@ -137,7 +176,7 @@ void MX_SubGHz_Phy_Process(void)
 	}
 
   /* USER CODE END MX_SubGHz_Phy_Process_1 */
-  //UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
+  UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
   /* USER CODE BEGIN MX_SubGHz_Phy_Process_2 */
 
   /* USER CODE END MX_SubGHz_Phy_Process_2 */
@@ -149,16 +188,14 @@ void MX_SubGHz_Phy_Process(void)
 
 /* Private Functions Definition -----------------------------------------------*/
 /* USER CODE BEGIN PrFD */
+
 void MX_SubGHz_Phy_EnterSleep(void)
 {
   UART_WakeUpTypeDef WakeUpSelection;
 
   SubghzApp_Sleep();
 
-  // Make sure that no LPUART transfer is on-going
-  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_BUSY) == SET);
-  // Make sure that LPUART is ready to receive
-  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_REACK) == RESET);
+  MX_USART1_GPS_Sleep();
 
   // Set the wake-up event
   WakeUpSelection.WakeUpEvent = UART_WAKEUP_ON_READDATA_NONEMPTY;
@@ -167,9 +204,7 @@ void MX_SubGHz_Phy_EnterSleep(void)
     Error_Handler();
   }
 
-  __HAL_UART_ENABLE_IT(&hlpuart1, UART_IT_WUF);
-  HAL_UARTEx_EnableStopMode(&hlpuart1);
-  HAL_PWR_EnterSTANDBYMode();
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 }
 
 int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char* p_Message)
@@ -206,11 +241,14 @@ int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char
 	memcpy(&APRS_TransmitBuffer[TotalLength], p_Position->lon_dir, 1);
 	TotalLength += 1;
 
-	APRS_TransmitBuffer[TotalLength] = '&';
-	TotalLength += 1;
+	if (p_Message != NULL)
+	{
+		APRS_TransmitBuffer[TotalLength] = '&';
+		TotalLength += 1;
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Message, strlen(p_Message));
-	TotalLength += strlen(p_Message);
+		memcpy(&APRS_TransmitBuffer[TotalLength], p_Message, strlen(p_Message));
+		TotalLength += strlen(p_Message);
+	}
 
 	return SubghzApp_Transmit(APRS_TransmitBuffer, TotalLength);
 }

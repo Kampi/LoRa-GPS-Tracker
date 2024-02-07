@@ -44,7 +44,14 @@ void MX_LPUART1_UART_Init(void);
 void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-int32_t MX_USART1_GPS_GetLine(char* p_LineBuffer, uint32_t Length);
+int32_t MX_USART1_GPS_Init(void);
+
+void MX_USART1_GPS_Sleep(void);
+void MX_USART1_GPS_WakeUp(void);
+
+int32_t MX_USART1_GPS_SendCommand(const char* Command, uint16_t Length);
+
+int32_t MX_USART1_GPS_GetNMEA(char* p_LineBuffer, uint32_t Length);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

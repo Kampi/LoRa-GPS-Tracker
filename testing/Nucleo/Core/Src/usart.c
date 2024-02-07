@@ -21,6 +21,9 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
+#include <string.h>
+
+#include "sys_app.h"
 
 /* USER CODE END 0 */
 
@@ -272,49 +275,119 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-int32_t MX_USART1_GPS_GetLine(char* p_LineBuffer, uint32_t Length)
+int32_t MX_USART1_GPS_Init(void)
+{
+	const char* PMTK314 = "$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n";
+	if (MX_USART1_GPS_SendCommand(PMTK314, strlen(PMTK314)) != HAL_OK)
+	{
+		return HAL_ERROR;
+	}
+
+	const char* PMTK225 = "$PMTK225,2,1000,10000,0,0*19\r\n";
+	if (MX_USART1_GPS_SendCommand(PMTK225, strlen(PMTK225)) != HAL_OK)
+	{
+		return HAL_ERROR;
+	}
+
+	return HAL_OK;
+}
+
+int32_t MX_USART1_GPS_SendCommand(const char* Command, uint16_t Length)
+{
+	char ReceiveBuffer[256] = {0};
+	char* Start;
+	char* Token;
+
+	if (HAL_UART_Transmit(&hlpuart1, (const uint8_t*)Command, Length, 100) != HAL_OK)
+	{
+		return HAL_ERROR;
+	}
+
+	do {
+		memset(ReceiveBuffer, 0, sizeof(ReceiveBuffer));
+
+		HAL_UART_Receive(&hlpuart1, (uint8_t*)ReceiveBuffer, sizeof(ReceiveBuffer), 100);
+
+		Start = strstr(ReceiveBuffer, "PMTK");
+		if (Start != NULL) {
+			break;
+		}
+	} while(1);
+
+  APP_LOG(TS_OFF, VLEVEL_M, "Buffer: %s", Start);
+
+  // Fetch and discard the header
+  Token = strtok(Start, ",");
+  APP_LOG(TS_OFF, VLEVEL_M, "Header: %s\n\r", Token);
+  if (strstr(Token, "PMTK001") != NULL)
+  {
+  	// PMTK_ACK
+  	// Fetch and discard data packet
+    strtok(NULL, ",");
+
+    // Fetch the status code and the checksum
+    Token = strtok(NULL, ",");
+    APP_LOG(TS_OFF, VLEVEL_M, "Flag: %s\n\r", Token);
+
+    if (Token[0] != '3')
+    {
+      APP_LOG(TS_OFF, VLEVEL_M, "Error\n\r");
+    	return HAL_ERROR;
+    }
+  }
+  else if (strstr(Token, "PMTK010") != NULL)
+  {
+  	// PMTK_SYS_MSG
+  }
+  else
+  {
+  	return HAL_ERROR;
+  }
+
+	return HAL_OK;
+}
+
+void MX_USART1_GPS_Sleep(void)
+{
+  // Make sure that no LPUART transfer is on-going
+  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_BUSY) == SET);
+
+  // Make sure that LPUART is ready to receive
+  while (__HAL_UART_GET_FLAG(&hlpuart1, USART_ISR_REACK) == RESET);
+
+  __HAL_UART_ENABLE_IT(&hlpuart1, UART_IT_WUF);
+
+  HAL_UARTEx_EnableStopMode(&hlpuart1);
+}
+
+void MX_USART1_GPS_WakeUp(void)
+{
+  HAL_UARTEx_DisableStopMode(&hlpuart1);
+}
+
+int32_t MX_USART1_GPS_GetNMEA(char* p_LineBuffer, uint32_t Length)
 {
 	uint8_t Temp;
 	uint32_t BytesReceived = 0;
 
 	if (Length == 0)
 	{
-		return -1;
+		return HAL_ERROR;
 	}
 
-	// Wait for the beginning of a line
+	memset(p_LineBuffer, 0, Length);
+
 	do
 	{
 		if (HAL_UART_Receive(&hlpuart1, &Temp, 1, 10) != HAL_OK)
 		{
-			return -1;
+			return HAL_ERROR;
 		}
 
-		if (Temp == '$')
-		{
-			BytesReceived++;
-			*p_LineBuffer++ = Temp;
-			break;
-		}
-	} while (1);
-
-	// Receive the remaining bytes
-	do
-	{
-		if (HAL_UART_Receive(&hlpuart1, &Temp, 1, 10) != HAL_OK)
-		{
-			return -1;
-		}
-
-		BytesReceived++;
 		*p_LineBuffer++ = Temp;
+		BytesReceived++;
+	} while ((Temp != '\n') || (BytesReceived == Length));
 
-		if ((BytesReceived == Length) || (Temp == '\n'))
-		{
-			return 0;
-		}
-	} while (1);
-
-  return -1;
+  return HAL_OK;
 }
 /* USER CODE END 1 */

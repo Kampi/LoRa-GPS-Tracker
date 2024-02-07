@@ -25,8 +25,8 @@
 #include "radio.h"
 
 /* USER CODE BEGIN Includes */
-#include "stm32_timer.h"
 #include "stm32_seq.h"
+#include "stm32_timer.h"
 #include "utilities_def.h"
 #include "subghz_phy_version.h"
 /* USER CODE END Includes */
@@ -43,9 +43,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
 #define MAX_APP_BUFFER_SIZE          255
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
