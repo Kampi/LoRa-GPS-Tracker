@@ -10,7 +10,7 @@
 
 ## About
 
-![PCB Top side](/docs/images/Preview.png)
+![PCB Top side](/docs/images/Image_Complete.jpg)
 
 ## Directory structure
 
