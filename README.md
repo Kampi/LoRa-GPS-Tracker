@@ -19,7 +19,9 @@
 ## Directory structure
 
 - `docs`: All kinds of project documentation
+- `firmware`: The firmware project for the tracker
 - `project`: KiCad project for the PCB
+- `testing`: 
 
 ## Purchasing
 
