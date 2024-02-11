@@ -1,0 +1,14 @@
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_bus.h:449:22:LL_AHB2_GRP1_EnableClock	24	static
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_bus.h:935:22:LL_APB1_GRP2_EnableClock	24	static
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_bus.h:1034:22:LL_APB1_GRP2_DisableClock	16	static
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_bus.h:1303:22:LL_APB2_GRP1_EnableClock	24	static
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_bus.h:1351:22:LL_APB2_GRP1_DisableClock	16	static
+../Core/Src/usart.c:36:6:MX_LPUART1_UART_Init	8	static
+../Core/Src/usart.c:82:6:MX_USART1_UART_Init	8	static
+../Core/Src/usart.c:125:6:HAL_UART_MspInit	96	static
+../Core/Src/usart.c:224:6:HAL_UART_MspDeInit	16	static
+../Core/Src/usart.c:273:9:MX_USART1_GPS_Init	16	static
+../Core/Src/usart.c:290:9:MX_USART1_GPS_SendCommand	288	static
+../Core/Src/usart.c:345:6:MX_USART1_GPS_Sleep	8	static
+../Core/Src/usart.c:358:6:MX_USART1_GPS_WakeUp	8	static
+../Core/Src/usart.c:363:9:MX_USART1_GPS_GetNMEA	24	static

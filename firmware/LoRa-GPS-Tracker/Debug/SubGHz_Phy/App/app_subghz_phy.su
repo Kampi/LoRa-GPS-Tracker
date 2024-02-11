@@ -1,0 +1,5 @@
+../Drivers/STM32WLxx_HAL_Driver/Inc/stm32wlxx_ll_rcc.h:3168:22:LL_RCC_ClearResetFlags	4	static
+../SubGHz_Phy/App/app_subghz_phy.c:79:6:MX_SubGHz_Phy_Init	32	static
+../SubGHz_Phy/App/app_subghz_phy.c:133:6:MX_SubGHz_Phy_Process	192	static
+../SubGHz_Phy/App/app_subghz_phy.c:192:6:MX_SubGHz_Phy_EnterSleep	16	static
+../SubGHz_Phy/App/app_subghz_phy.c:210:9:MX_SubGHz_Phy_APRS_Send	40	static
