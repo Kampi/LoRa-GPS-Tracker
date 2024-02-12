@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-- [ZSWatch Hardware](#zswatch-hardware)
+- [LoRa-GPS-Tracker](#lora-gps-tracker)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Directory structure](#directory-structure)
