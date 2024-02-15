@@ -1,0 +1,5 @@
+[ProjectFiles]
+HeaderPath=../Drivers/BSP/LoRa-GPS-Tracker
+[Others]
+[Groups]
+Drivers/BSP/LoRa-GPS-Tracker=../Drivers/BSP/LoRa-GPS-Tracker/lora_gps_tracker_radio.c; ../Drivers/BSP/LoRa-GPS-Tracker/lora_gps_tracker_radio.c
