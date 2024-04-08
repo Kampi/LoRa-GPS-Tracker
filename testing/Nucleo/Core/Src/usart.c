@@ -24,7 +24,6 @@
 #include <string.h>
 
 #include "sys_app.h"
-
 /* USER CODE END 0 */
 
 UART_HandleTypeDef hlpuart1;

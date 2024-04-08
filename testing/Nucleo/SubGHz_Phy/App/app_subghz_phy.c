@@ -98,7 +98,7 @@ void MX_SubGHz_Phy_Init(void)
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST) || __HAL_RCC_GET_FLAG(RCC_FLAG_PINRST))
   {
     APP_LOG(TS_OFF, VLEVEL_M, "Device reset...\n\r");
-
+/*
     do {
       APP_LOG(TS_OFF, VLEVEL_M, "Initialize GPS module. Attempt %u\n\r", InitCounter);
       InitCounter++;
@@ -108,15 +108,15 @@ void MX_SubGHz_Phy_Init(void)
       	Error_Handler();
       }
     } while (MX_USART1_GPS_Init() != HAL_OK);
-
+*/
     APP_LOG(TS_OFF, VLEVEL_M, "Initialization successful!\n\r");
 
     for (uint8_t i = 0; i < 4; i++)
     {
-      HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_SET);
-      HAL_Delay(100);
-      HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_RESET);
-      HAL_Delay(100);
+      //HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_SET);
+      //HAL_Delay(100);
+      //HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_RESET);
+      //HAL_Delay(100);
     }
 
     __HAL_RCC_CLEAR_RESET_FLAGS();
@@ -138,6 +138,17 @@ void MX_SubGHz_Phy_Process(void)
 	GPS_GPGGA_t GPGGA_Data;
 
 	memset(&GPGGA_Data, 0, sizeof(GPGGA_Data));
+
+  APP_LOG(TS_OFF, VLEVEL_M, "Go\n\r");
+	uint8_t Buffer[] = {0x3C, 0xFF, 0x01, 0x44, 0x4F, 0x32, 0x44, 0x4B,
+											0x48, 0x2D, 0x37, 0x3E, 0x41, 0x50, 0x4C, 0x47,
+											0x30, 0x31, 0x3A, 0x21, 0x34, 0x39, 0x33, 0x32,
+											0x2E, 0x30, 0x35, 0x4E, 0x4C, 0x30, 0x31, 0x30,
+											0x34, 0x37, 0x2E, 0x35, 0x30, 0x45, 0x26, 0x54,
+											0x65, 0x73, 0x74, 0x32};
+	SubghzApp_Transmit(Buffer, sizeof(Buffer));
+  APP_LOG(TS_OFF, VLEVEL_M, "Done\n\r");
+	return;
 
 	Status = MX_USART1_GPS_GetNMEA(LineBuffer, sizeof(LineBuffer));
 	if (Status == HAL_OK)

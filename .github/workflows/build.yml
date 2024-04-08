@@ -31,16 +31,16 @@ jobs:
       - name: Dependencies
         run: |
           sudo apt update
-          wget https://github.com/INTI-CMNB/KiBot/releases/download/v1.6.3/kibot_1.6.3-1_all.deb
+          wget https://github.com/INTI-CMNB/KiBot/releases/download/v1.6.5/kibot_1.6.5-1_all.deb
           sudo apt install ./kibot*_all.deb
 
-          wget https://github.com/INTI-CMNB/InteractiveHtmlBom/releases/download/v2.7.0-1/interactivehtmlbom.inti-cmnb_2.7.0-1_all.deb
-          sudo apt install ./interactivehtmlbom.inti-cmnb_2.7.0-1_all.deb
+          wget https://github.com/INTI-CMNB/InteractiveHtmlBom/releases/download/v2.9.0-1/interactivehtmlbom.inti-cmnb_2.9.0-1_all.deb
+          sudo apt install ./interactivehtmlbom.inti-cmnb_2.9.0-1_all.deb
 
-          wget https://github.com/INTI-CMNB/KiAuto/releases/download/v2.2.8/kiauto_2.2.8-1_all.deb
-          sudo apt install ./kiauto_2.2.8-1_all.deb
+          wget https://github.com/INTI-CMNB/KiAuto/releases/download/v2.3.0/kiauto_2.3.0-1_all.deb
+          sudo apt install ./kiauto_2.3.0-1_all.deb
 
-          sudo add-apt-repository --yes ppa:kicad/kicad-7.0-releases
+          sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
           sudo apt install --install-recommends kicad
 
           git clone https://github.com/Kampi/KiCad.git library
@@ -52,6 +52,7 @@ jobs:
 
       - name: Initialize
         run: |
+          mkdir -p docs/images/
           mkdir production
 
       - name: Generate files

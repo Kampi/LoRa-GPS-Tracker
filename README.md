@@ -14,6 +14,8 @@
 
 ## About
 
+This is a project for a LoRa based APRS GPS tracker.
+
 ![PCB Top side](/docs/images/Image_Complete.jpg)
 
 ## Directory structure

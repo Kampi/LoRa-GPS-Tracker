@@ -263,6 +263,8 @@ outputs:
     type: step
     dir: cad
     category: "mechanical"
+    options:
+      origin: "156,101.5"
 
   - name: "3D rendering"
     comment: "3D rendering"
