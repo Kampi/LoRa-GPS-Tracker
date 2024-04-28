@@ -10,6 +10,7 @@
   - [About](#about)
   - [Directory structure](#directory-structure)
   - [Purchasing](#purchasing)
+  - [Programming](#programming)
   - [Maintainer](#maintainer)
 
 ## About
@@ -28,6 +29,16 @@ This is a project for a LoRa based APRS GPS tracker.
 ## Purchasing
 
 Please open `LoRa-GPS-Tracker-navigate.html` and use the files listed under `purchasing` for ordering a PCB.
+
+## Programming
+
+1. Download and install [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
+2. Close the `PROG` jumper on the PCB
+3. Connect the board via USB to your PC
+4. Open `Memory & File editing` in `STM32CubeProgrammer`
+5. Select `UART`, the target COM port and `Read Unprotect (MCU)`
+6. Click `Connect` and wait for a connection
+7. Open `Erase & Programming` and click `Browse`
 
 ## Maintainer
 

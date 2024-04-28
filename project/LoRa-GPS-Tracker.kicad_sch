@@ -434,7 +434,7 @@
 				(pin output line
 					(at 12.7 2.54 180)
 					(length 2.54)
-					(name "SWDCLK/TCK"
+					(name "SWCLK/TCK"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -590,7 +590,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA"
+			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA MCX MMCX U.FL UMRF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -599,7 +599,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO*"
+			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -708,7 +708,7 @@
 				)
 			)
 		)
-		(symbol "Connector:USB_C_Receptacle_USB2.0"
+		(symbol "Connector:USB_C_Receptacle_USB2.0_14P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -716,21 +716,19 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "J"
-				(at -10.16 19.05 0)
+				(at 0 22.225 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "USB_C_Receptacle_USB2.0"
-				(at 19.05 19.05 0)
+			(property "Value" "USB_C_Receptacle_USB2.0_14P"
+				(at 0 19.685 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify right)
 				)
 			)
 			(property "Footprint" ""
@@ -751,7 +749,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "USB 2.0-only Type-C Receptacle connector"
+			(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
 				(at 0 0 0)
 				(effects
 					(font
@@ -778,32 +776,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_0_0"
+			(symbol "USB_C_Receptacle_USB2.0_14P_0_0"
 				(rectangle
 					(start -0.254 -17.78)
 					(end 0.254 -16.764)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -14.986)
-					(end 9.144 -15.494)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -12.446)
-					(end 9.144 -12.954)
 					(stroke
 						(width 0)
 						(type default)
@@ -890,7 +866,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_0_1"
+			(symbol "USB_C_Receptacle_USB2.0_14P_0_1"
 				(rectangle
 					(start -10.16 17.78)
 					(end 10.16 -17.78)
@@ -1091,7 +1067,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Receptacle_USB2.0_1_1"
+			(symbol "USB_C_Receptacle_USB2.0_14P_1_1"
 				(pin passive line
 					(at 0 -22.86 90)
 					(length 5.08)
@@ -1193,24 +1169,6 @@
 						)
 					)
 					(number "A7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -12.7 180)
-					(length 5.08)
-					(name "SBU1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1337,24 +1295,6 @@
 						)
 					)
 					(number "B7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -15.24 180)
-					(length 5.08)
-					(name "SBU2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3618,8 +3558,8 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "Q"
-				(at 2.54 1.905 0)
+			(property "Reference" "T"
+				(at 5.08 1.905 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3628,7 +3568,7 @@
 				)
 			)
 			(property "Value" "BSH205G2AR"
-				(at 2.54 0 0)
+				(at 5.08 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3637,7 +3577,7 @@
 				)
 			)
 			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-				(at -15.24 0 0)
+				(at 5.08 -1.905 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3648,7 +3588,7 @@
 				)
 			)
 			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BSH205G2A.pdf"
-				(at -26.67 0 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3659,24 +3599,6 @@
 			)
 			(property "Description" "-2A Id, -20V Vds, P-Channel MOSFET, SOT-23"
 				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Mfr." "Nexperia"
-				(at -2.54 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Mfr. No." "BSH205G2AR"
-				(at -2.54 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3703,8 +3625,140 @@
 				)
 			)
 			(symbol "BSH205G2AR_0_1"
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(circle
-					(center -0.889 0)
+					(center 1.651 0)
 					(radius 2.794)
 					(stroke
 						(width 0.254)
@@ -3715,7 +3769,7 @@
 					)
 				)
 				(circle
-					(center 0 -1.778)
+					(center 2.54 -1.778)
 					(radius 0.254)
 					(stroke
 						(width 0)
@@ -3725,140 +3779,8 @@
 						(type outline)
 					)
 				)
-				(polyline
-					(pts
-						(xy -2.286 0) (xy -5.08 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.286 1.905) (xy -2.286 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -1.27) (xy -1.778 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 0.508) (xy -1.778 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 2.286) (xy -1.778 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0 1.778)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 0 0) (xy -1.778 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 1.778) (xy 0.762 1.778) (xy 0.762 -1.778) (xy -1.778 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.254 0) (xy -1.27 0.381) (xy -1.27 -0.381) (xy -0.254 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 -0.508) (xy 0.381 -0.381) (xy 1.143 -0.381) (xy 1.27 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -0.381) (xy 0.381 0.254) (xy 1.143 0.254) (xy 0.762 -0.381)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(circle
-					(center 0 1.778)
+					(center 2.54 1.778)
 					(radius 0.254)
 					(stroke
 						(width 0)
@@ -3871,7 +3793,7 @@
 			)
 			(symbol "BSH205G2AR_1_1"
 				(pin input line
-					(at -7.62 0 0)
+					(at -5.08 0 0)
 					(length 2.54)
 					(name "G"
 						(effects
@@ -3889,7 +3811,7 @@
 					)
 				)
 				(pin passive line
-					(at 0 -5.08 90)
+					(at 2.54 -5.08 90)
 					(length 2.54)
 					(name "S"
 						(effects
@@ -3907,7 +3829,7 @@
 					)
 				)
 				(pin passive line
-					(at 0 5.08 270)
+					(at 2.54 5.08 270)
 					(length 2.54)
 					(name "D"
 						(effects
@@ -4279,7 +4201,7 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "M"
-				(at -12.065 26.67 0)
+				(at -11.43 26.67 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4287,7 +4209,7 @@
 				)
 			)
 			(property "Value" "RAK3172"
-				(at -8.255 -26.67 0)
+				(at -8.89 -26.67 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4374,7 +4296,7 @@
 				(pin power_in line
 					(at -5.08 -27.94 90)
 					(length 2.54)
-					(name "GND"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4482,7 +4404,7 @@
 				(pin power_in line
 					(at -2.54 -27.94 90)
 					(length 2.54)
-					(name "GND"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4500,7 +4422,7 @@
 				(pin power_in line
 					(at 0 -27.94 90)
 					(length 2.54)
-					(name "GND"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4608,7 +4530,7 @@
 				(pin power_in line
 					(at 2.54 -27.94 90)
 					(length 2.54)
-					(name "GND"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4698,7 +4620,7 @@
 				(pin power_in line
 					(at 5.08 -27.94 90)
 					(length 2.54)
-					(name "GND"
+					(name "VSS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4770,7 +4692,7 @@
 				(pin input line
 					(at 15.24 6.35 180)
 					(length 2.54)
-					(name "ADC2"
+					(name "ADC1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4788,7 +4710,7 @@
 				(pin input line
 					(at 15.24 8.89 180)
 					(length 2.54)
-					(name "ADC1"
+					(name "ADC2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5361,7 +5283,7 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "SW"
-				(at 0 4.318 0)
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5446,9 +5368,20 @@
 				)
 			)
 			(symbol "SW_DPDT_x2_0_1"
+				(rectangle
+					(start -3.175 3.81)
+					(end 3.175 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
 				(polyline
 					(pts
-						(xy -1.524 0.254) (xy 1.651 2.286)
+						(xy -1.524 0.254) (xy 1.5748 2.286)
 					)
 					(stroke
 						(width 0)
@@ -5618,7 +5551,7 @@
 				)
 			)
 			(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30366.pdf"
-				(at 0 0 0)
+				(at 5.08 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5913,7 +5846,7 @@
 				)
 			)
 			(property "Datasheet" "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf"
-				(at 0 0 0)
+				(at 5.08 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -6175,9 +6108,9 @@
 		)
 		(symbol "power:+3V0"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6275,8 +6208,8 @@
 			(symbol "+3V0_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
-					(name "+3V0"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6295,9 +6228,9 @@
 		)
 		(symbol "power:GND"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6371,8 +6304,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
-					(name "GND"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6583,10 +6516,6 @@
 		(uuid "fbbecb24-a9f0-4850-9f11-7d2e7de51de7")
 	)
 	(no_connect
-		(at 360.68 92.71)
-		(uuid "01392527-f316-4e8f-b3d4-c9665a7c58eb")
-	)
-	(no_connect
 		(at 191.77 259.08)
 		(uuid "0582dfb1-25d6-4622-9271-22bacec749b9")
 	)
@@ -6609,6 +6538,10 @@
 	(no_connect
 		(at 191.77 251.46)
 		(uuid "0582dfb1-25d6-4622-9271-22bacec749be")
+	)
+	(no_connect
+		(at 330.2 71.12)
+		(uuid "0f012316-ffdc-4fc9-8eaf-8601484a9302")
 	)
 	(no_connect
 		(at 106.68 227.33)
@@ -6651,10 +6584,6 @@
 		(uuid "9ea8f0ea-9a1e-417c-b751-b91ecf3b8df0")
 	)
 	(no_connect
-		(at 360.68 58.42)
-		(uuid "9ea8f0ea-9a1e-417c-b751-b91ecf3b8df1")
-	)
-	(no_connect
 		(at 360.68 63.5)
 		(uuid "9ea8f0ea-9a1e-417c-b751-b91ecf3b8df2")
 	)
@@ -6663,16 +6592,8 @@
 		(uuid "a7de50a5-c8bd-4164-b0c6-d0828baec189")
 	)
 	(no_connect
-		(at 44.45 60.96)
-		(uuid "ad16adf7-6889-41c7-a357-7c63bbeed824")
-	)
-	(no_connect
 		(at 356.87 25.4)
 		(uuid "c8652e6f-b32b-44fc-93d9-1349a2f98540")
-	)
-	(no_connect
-		(at 44.45 63.5)
-		(uuid "cb5662dc-1ff0-43ae-b3e8-e9dc443417ee")
 	)
 	(no_connect
 		(at 38.1 245.11)
@@ -6701,6 +6622,10 @@
 	(no_connect
 		(at 73.66 245.11)
 		(uuid "deda7b60-b017-405e-b7b8-0cdcae7bb815")
+	)
+	(no_connect
+		(at 330.2 73.66)
+		(uuid "e066b771-f5ee-4a98-82b8-38fb4ff345b3")
 	)
 	(no_connect
 		(at 360.68 49.53)
@@ -6758,6 +6683,16 @@
 	)
 	(wire
 		(pts
+			(xy 360.68 85.09) (xy 361.95 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0594eb65-bede-4890-8be4-b7cb288ff94a")
+	)
+	(wire
+		(pts
 			(xy 57.15 209.55) (xy 57.15 204.47)
 		)
 		(stroke
@@ -6795,6 +6730,16 @@
 			(type default)
 		)
 		(uuid "0952ce15-1638-4ee2-ac36-7d17c949a2a6")
+	)
+	(wire
+		(pts
+			(xy 360.68 58.42) (xy 361.95 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09621c85-90b4-44be-bf1d-37525198d743")
 	)
 	(polyline
 		(pts
@@ -6888,7 +6833,7 @@
 	)
 	(wire
 		(pts
-			(xy 280.67 253.365) (xy 281.94 253.365)
+			(xy 280.67 252.73) (xy 281.94 252.73)
 		)
 		(stroke
 			(width 0)
@@ -7135,6 +7080,16 @@
 			(type default)
 		)
 		(uuid "2c8d3dcc-329c-431a-a65a-f005e613bbfc")
+	)
+	(wire
+		(pts
+			(xy 370.84 92.71) (xy 370.84 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ceddcbc-8316-43cb-a849-532cb3a923ba")
 	)
 	(wire
 		(pts
@@ -7818,16 +7773,6 @@
 	)
 	(wire
 		(pts
-			(xy 328.93 71.12) (xy 330.2 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b7caad0-638e-4ce1-84a4-482929db0976")
-	)
-	(wire
-		(pts
 			(xy 160.02 33.02) (xy 161.29 33.02)
 		)
 		(stroke
@@ -7995,16 +7940,6 @@
 			(type default)
 		)
 		(uuid "79a55c1c-22b7-4b4a-bd0a-ffcd2fbb4f9d")
-	)
-	(wire
-		(pts
-			(xy 360.68 85.09) (xy 372.11 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b7870d4-f602-4339-a04e-24ad99d1e3ba")
 	)
 	(wire
 		(pts
@@ -8628,6 +8563,16 @@
 	)
 	(wire
 		(pts
+			(xy 360.68 92.71) (xy 370.84 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bff73f39-29e7-4382-9cc5-7fa6e1aec4a8")
+	)
+	(wire
+		(pts
 			(xy 44.45 48.26) (xy 45.72 48.26)
 		)
 		(stroke
@@ -8728,7 +8673,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 253.365) (xy 270.51 253.365)
+			(xy 269.24 252.73) (xy 270.51 252.73)
 		)
 		(stroke
 			(width 0)
@@ -8785,16 +8730,6 @@
 			(type default)
 		)
 		(uuid "cc7fdda4-1f0b-4447-b8f5-2a7f9266383d")
-	)
-	(wire
-		(pts
-			(xy 328.93 73.66) (xy 330.2 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf55943c-603b-45b1-91ee-7761f58a4586")
 	)
 	(wire
 		(pts
@@ -8938,7 +8873,7 @@
 	)
 	(wire
 		(pts
-			(xy 275.59 257.175) (xy 275.59 258.445)
+			(xy 275.59 256.54) (xy 275.59 257.81)
 		)
 		(stroke
 			(width 0)
@@ -9108,6 +9043,16 @@
 	)
 	(wire
 		(pts
+			(xy 370.84 85.09) (xy 372.11 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe497351-3a33-463a-ba58-d37e5bd0b37c")
+	)
+	(wire
+		(pts
 			(xy 30.48 186.69) (xy 30.48 187.96)
 		)
 		(stroke
@@ -9226,13 +9171,13 @@
 		(uuid "e5f52525-b58f-422d-a2bc-5bab8f074c75")
 	)
 	(label "Rx_PROG"
-		(at 328.93 71.12 180)
+		(at 361.95 85.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "015c0912-e7c5-4ac5-a932-62b1457c4a3b")
 	)
@@ -9292,13 +9237,13 @@
 		(uuid "43704f71-8dfa-47ae-bf24-5288016cec31")
 	)
 	(label "Rx_PROG"
-		(at 281.94 253.365 0)
+		(at 269.24 252.73 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "445bb2b0-639d-4d5e-a4f2-3d5bcc95ae39")
 	)
@@ -9391,13 +9336,13 @@
 		(uuid "757ab84b-ee11-4d4a-9dbd-66737c518cc8")
 	)
 	(label "Tx_PROG"
-		(at 281.94 269.24 0)
+		(at 269.24 269.24 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "7997fbee-7e97-45b6-9060-1a43bdd08c0b")
 	)
@@ -9413,24 +9358,24 @@
 		(uuid "7a9647e6-65e2-4878-bb0e-a6f0c12112b6")
 	)
 	(label "Rx_LOG"
-		(at 269.24 253.365 180)
+		(at 281.94 252.73 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "81dff893-c5ed-4772-bf48-992089010154")
 	)
 	(label "Tx_PROG"
-		(at 328.93 73.66 180)
+		(at 361.95 58.42 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "95e20946-aca0-4689-972b-534dfd825f0f")
 	)
@@ -9468,7 +9413,7 @@
 		(uuid "a8697ad8-8887-470e-9e1f-baadf95a1a23")
 	)
 	(label "Rx"
-		(at 275.59 258.445 270)
+		(at 275.59 257.81 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9556,13 +9501,13 @@
 		(uuid "d2142b94-286e-416e-aa1b-5721c9e54d5a")
 	)
 	(label "Tx_LOG"
-		(at 269.24 269.24 180)
+		(at 281.94 269.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "dc5eba93-3e10-432a-ac20-f07a7829769e")
 	)
@@ -9658,7 +9603,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/240/pcm-3050642.pdf"
+		(property "Datasheet" "~"
 			(at 193.04 54.61 0)
 			(effects
 				(font
@@ -9667,7 +9612,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Switch, dual pole double throw, separate symbols"
 			(at 193.04 54.61 0)
 			(effects
 				(font
@@ -9792,7 +9737,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 345.44 102.87 0)
 			(effects
 				(font
@@ -9858,7 +9803,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 176.53 224.79 0)
 			(effects
 				(font
@@ -9923,7 +9868,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 223.52 63.5 0)
 			(effects
 				(font
@@ -9988,7 +9933,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 170.18 63.5 0)
 			(effects
 				(font
@@ -10046,7 +9991,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 212.09 53.34 0)
 			(effects
 				(font
@@ -10055,7 +10000,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 212.09 53.34 0)
 			(effects
 				(font
@@ -10160,7 +10105,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 387.35 104.14 0)
 			(effects
 				(font
@@ -10216,7 +10161,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 87.63 250.19 0)
 			(effects
 				(font
@@ -10225,7 +10170,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 87.63 250.19 0)
 			(effects
 				(font
@@ -10323,7 +10268,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 138.43 251.46 0)
 			(effects
 				(font
@@ -10332,7 +10277,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 138.43 251.46 0)
 			(effects
 				(font
@@ -10451,7 +10396,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23"
 			(at 54.61 170.18 0)
 			(effects
 				(font
@@ -10559,7 +10504,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 299.72 64.77 0)
 			(effects
 				(font
@@ -10618,7 +10563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 49.53 200.66 0)
 			(effects
 				(font
@@ -10627,7 +10572,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 49.53 200.66 0)
 			(effects
 				(font
@@ -10724,7 +10669,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 237.49 53.34 0)
 			(effects
 				(font
@@ -10733,7 +10678,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 237.49 53.34 0)
 			(effects
 				(font
@@ -10837,7 +10782,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 144.78 63.5 0)
 			(effects
 				(font
@@ -10860,7 +10805,7 @@
 	)
 	(symbol
 		(lib_id "Nexperia:BSH205G2AR")
-		(at 154.94 33.02 90)
+		(at 154.94 35.56 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10885,7 +10830,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 156.845 27.94 0)
+			(at 156.845 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10896,7 +10841,7 @@
 			)
 		)
 		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BSH205G2A.pdf"
-			(at 154.94 33.02 0)
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10905,8 +10850,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 154.94 33.02 0)
+		(property "Description" "-2A Id, -20V Vds, P-Channel MOSFET, SOT-23"
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10915,7 +10860,7 @@
 			)
 		)
 		(property "Mfr." "Nexperia"
-			(at 154.94 33.02 0)
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10924,7 +10869,7 @@
 			)
 		)
 		(property "Mfr. No." "BSH205G2VL"
-			(at 154.94 33.02 0)
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10933,7 +10878,7 @@
 			)
 		)
 		(property "Distributor" "Mouser"
-			(at 154.94 33.02 0)
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10942,7 +10887,16 @@
 			)
 		)
 		(property "Order Number" "771-BSH205G2VL"
-			(at 154.94 33.02 0)
+			(at 154.94 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
+			(at 154.94 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11012,7 +10966,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 154.94 63.5 0)
 			(effects
 				(font
@@ -11069,7 +11023,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 375.92 85.09 0)
 			(effects
 				(font
@@ -11078,7 +11032,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 375.92 85.09 0)
 			(effects
 				(font
@@ -11193,7 +11147,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 81.28 255.27 0)
 			(effects
 				(font
@@ -11262,7 +11216,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 314.96 40.64 0)
 			(effects
 				(font
@@ -11318,7 +11272,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 30.48 257.81 0)
 			(effects
 				(font
@@ -11327,7 +11281,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 30.48 257.81 0)
 			(effects
 				(font
@@ -11423,7 +11377,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 199.39 248.92 0)
 			(effects
 				(font
@@ -11432,7 +11386,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 199.39 248.92 0)
 			(effects
 				(font
@@ -11546,7 +11500,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 299.72 39.37 0)
 			(effects
 				(font
@@ -11611,7 +11565,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 3-pole, open"
 			(at 275.59 269.24 0)
 			(effects
 				(font
@@ -11728,7 +11682,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 173.99 276.86 0)
 			(effects
 				(font
@@ -11793,7 +11747,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 66.04 40.64 0)
 			(effects
 				(font
@@ -11848,7 +11802,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/11187f.pdf"
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/11187f.pdf"
 			(at 172.72 50.8 0)
 			(effects
 				(font
@@ -11857,7 +11811,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Microcontroller reset monitor, 3.00V threshold, active low output"
 			(at 172.72 50.8 0)
 			(effects
 				(font
@@ -11974,7 +11928,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 109.22 260.35 0)
 			(effects
 				(font
@@ -12030,7 +11984,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.vishay.com/doc?20035"
+		(property "Datasheet" "~"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -12039,7 +11993,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor, small symbol"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -12136,7 +12090,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_12-3003070.pdf"
+		(property "Datasheet" "~"
 			(at 57.15 200.66 0)
 			(effects
 				(font
@@ -12145,7 +12099,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 57.15 200.66 0)
 			(effects
 				(font
@@ -12243,7 +12197,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 80.01 53.34 0)
 			(effects
 				(font
@@ -12252,7 +12206,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 80.01 53.34 0)
 			(effects
 				(font
@@ -12314,7 +12268,7 @@
 	)
 	(symbol
 		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 275.59 253.365 0)
+		(at 275.59 252.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -12323,7 +12277,7 @@
 		(fields_autoplaced yes)
 		(uuid "549662af-db91-4e35-b427-8815683b4446")
 		(property "Reference" "JP101"
-			(at 275.59 247.65 0)
+			(at 275.59 247.015 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12331,7 +12285,7 @@
 			)
 		)
 		(property "Value" "RX"
-			(at 275.59 250.19 0)
+			(at 275.59 249.555 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12339,7 +12293,7 @@
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels"
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12348,7 +12302,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12356,8 +12310,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 275.59 253.365 0)
+		(property "Description" "Solder Jumper, 3-pole, open"
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12366,7 +12320,7 @@
 			)
 		)
 		(property "Mfr." ""
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12375,7 +12329,7 @@
 			)
 		)
 		(property "Mfr. No." ""
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12384,7 +12338,7 @@
 			)
 		)
 		(property "Distributor" ""
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12393,7 +12347,7 @@
 			)
 		)
 		(property "Order Number" ""
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12402,7 +12356,7 @@
 			)
 		)
 		(property "CONFIG" ""
-			(at 275.59 253.365 0)
+			(at 275.59 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12473,7 +12427,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 66.04 236.22 0)
 			(effects
 				(font
@@ -12537,7 +12491,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "500-mA Ultra-Low-Noise Low-IQ LDO, 3.3V, WDFN-6"
 			(at 223.52 35.56 0)
 			(effects
 				(font
@@ -12657,7 +12611,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/527/fts-2854063.pdf"
+		(property "Datasheet" "http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf"
 			(at 215.9 285.75 90)
 			(effects
 				(font
@@ -12666,7 +12620,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface"
 			(at 224.79 254 0)
 			(effects
 				(font
@@ -12766,7 +12720,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:USB_C_Receptacle_USB2.0")
+		(lib_id "Connector:USB_C_Receptacle_USB2.0_14P")
 		(at 29.21 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12799,7 +12753,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/837/Global_Connector_Technology_usb4105-3106202.pdf"
+		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
 			(at 33.02 48.26 0)
 			(effects
 				(font
@@ -12808,7 +12762,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
 			(at 29.21 48.26 0)
 			(effects
 				(font
@@ -12880,9 +12834,6 @@
 		(pin "A7"
 			(uuid "decba1eb-b6b4-436e-ad8f-6bd83928ee03")
 		)
-		(pin "A8"
-			(uuid "d52b4817-8f5f-43ab-b28c-6707c9bbe91a")
-		)
 		(pin "A9"
 			(uuid "f491e7c4-bf7b-45e0-a24b-4b171af5ea4f")
 		)
@@ -12903,9 +12854,6 @@
 		)
 		(pin "B7"
 			(uuid "47cf0fdb-1d88-4589-97a9-b5332b55e8c1")
-		)
-		(pin "B8"
-			(uuid "6951c37d-9731-4252-86e5-2369612e7e30")
 		)
 		(pin "B9"
 			(uuid "873aecb6-18e0-4c4a-8a85-3be1268b81a4")
@@ -12958,7 +12906,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 199.39 246.38 0)
 			(effects
 				(font
@@ -12967,7 +12915,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 199.39 246.38 0)
 			(effects
 				(font
@@ -13083,7 +13031,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 97.79 255.27 0)
 			(effects
 				(font
@@ -13268,7 +13216,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/723/HB_QLS6B_FKW-3402147.pdf"
+		(property "Datasheet" "https://www.cree.com/led-components/media/documents/CLS6B-FKW.pdf"
 			(at 377.19 88.9 0)
 			(effects
 				(font
@@ -13403,7 +13351,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 118.11 63.5 0)
 			(effects
 				(font
@@ -13468,7 +13416,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 41.91 187.96 0)
 			(effects
 				(font
@@ -13534,7 +13482,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 331.47 27.94 0)
 			(effects
 				(font
@@ -13604,7 +13552,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
 			(at 39.37 176.53 0)
 			(effects
 				(font
@@ -13703,7 +13651,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://ftdichip.com/wp-content/uploads/2021/10/DS_FT230X.pdf"
+		(property "Datasheet" "https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT230X.pdf"
 			(at 173.99 256.54 0)
 			(effects
 				(font
@@ -13712,7 +13660,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Full Speed USB to Basic UART, SSOP-16"
 			(at 173.99 256.54 0)
 			(effects
 				(font
@@ -13868,7 +13816,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 167.64 236.22 0)
 			(effects
 				(font
@@ -13926,7 +13874,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 41.91 165.1 0)
 			(effects
 				(font
@@ -13935,7 +13883,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 41.91 165.1 0)
 			(effects
 				(font
@@ -14039,7 +13987,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 55.88 276.86 0)
 			(effects
 				(font
@@ -14105,7 +14053,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 81.28 260.35 0)
 			(effects
 				(font
@@ -14163,7 +14111,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/AVX_E_1004627-3313018.pdf"
+		(property "Datasheet" "~"
 			(at 106.68 222.25 0)
 			(effects
 				(font
@@ -14172,7 +14120,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Antenna"
 			(at 106.68 222.25 0)
 			(effects
 				(font
@@ -14283,7 +14231,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 34.29 236.22 0)
 			(effects
 				(font
@@ -14348,7 +14296,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 30.48 187.96 0)
 			(effects
 				(font
@@ -14406,7 +14354,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 30.48 182.88 0)
 			(effects
 				(font
@@ -14415,7 +14363,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 30.48 182.88 0)
 			(effects
 				(font
@@ -14521,7 +14469,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 154.94 53.34 0)
 			(effects
 				(font
@@ -14530,7 +14478,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 154.94 53.34 0)
 			(effects
 				(font
@@ -14635,7 +14583,52 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 29.21 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr." ""
+			(at 29.21 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. No." ""
+			(at 29.21 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor" ""
+			(at 29.21 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order Number" ""
+			(at 29.21 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 29.21 72.39 0)
 			(effects
 				(font
@@ -14693,7 +14686,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/781710002?display=pdf"
+		(property "Datasheet" "~"
 			(at 142.24 22.86 0)
 			(effects
 				(font
@@ -14702,7 +14695,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 142.24 22.86 0)
 			(effects
 				(font
@@ -14816,7 +14809,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 97.79 260.35 0)
 			(effects
 				(font
@@ -14875,7 +14868,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 48.26 231.14 0)
 			(effects
 				(font
@@ -14884,7 +14877,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 48.26 231.14 0)
 			(effects
 				(font
@@ -14988,7 +14981,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 349.25 40.64 0)
 			(effects
 				(font
@@ -15047,7 +15040,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 34.29 231.14 0)
 			(effects
 				(font
@@ -15056,7 +15049,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 34.29 231.14 0)
 			(effects
 				(font
@@ -15153,7 +15146,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/308/1/MM5Z2V4T1_D-2316295.pdf"
+		(property "Datasheet" "~"
 			(at 118.11 46.99 0)
 			(effects
 				(font
@@ -15266,7 +15259,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 30.48 250.19 0)
 			(effects
 				(font
@@ -15275,7 +15268,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 30.48 250.19 0)
 			(effects
 				(font
@@ -15380,7 +15373,52 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr." ""
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfr. No." ""
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor" ""
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order Number" ""
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 237.49 26.67 0)
 			(effects
 				(font
@@ -15439,7 +15477,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 299.72 44.45 0)
 			(effects
 				(font
@@ -15448,7 +15486,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 299.72 44.45 0)
 			(effects
 				(font
@@ -15553,7 +15591,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 90.17 63.5 0)
 			(effects
 				(font
@@ -15618,7 +15656,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 49.53 209.55 0)
 			(effects
 				(font
@@ -15677,7 +15715,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 139.7 53.34 0)
 			(effects
 				(font
@@ -15686,7 +15724,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 139.7 53.34 0)
 			(effects
 				(font
@@ -15790,7 +15828,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 102.87 63.5 0)
 			(effects
 				(font
@@ -15848,7 +15886,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 66.04 231.14 0)
 			(effects
 				(font
@@ -15857,7 +15895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 66.04 231.14 0)
 			(effects
 				(font
@@ -15954,7 +15992,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 349.25 35.56 0)
 			(effects
 				(font
@@ -15963,7 +16001,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 349.25 35.56 0)
 			(effects
 				(font
@@ -16058,7 +16096,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 78.74 226.06 0)
 			(effects
 				(font
@@ -16067,7 +16105,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 78.74 226.06 0)
 			(effects
 				(font
@@ -16164,7 +16202,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.delock.de/produkt/88915/merkmale.html"
+		(property "Datasheet" "~"
 			(at 356.87 20.32 0)
 			(effects
 				(font
@@ -16173,7 +16211,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Antenna"
 			(at 356.87 20.32 0)
 			(effects
 				(font
@@ -16283,7 +16321,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 193.04 63.5 0)
 			(effects
 				(font
@@ -16342,7 +16380,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 167.64 231.14 0)
 			(effects
 				(font
@@ -16351,7 +16389,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 167.64 231.14 0)
 			(effects
 				(font
@@ -16465,7 +16503,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 53.34 224.79 0)
 			(effects
 				(font
@@ -16531,7 +16569,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 48.26 236.22 0)
 			(effects
 				(font
@@ -16596,7 +16634,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 237.49 63.5 0)
 			(effects
 				(font
@@ -16661,7 +16699,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 212.09 62.23 0)
 			(effects
 				(font
@@ -16727,7 +16765,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 80.01 63.5 0)
 			(effects
 				(font
@@ -16784,7 +16822,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/54/cr-1858361.pdf"
+		(property "Datasheet" "~"
 			(at 165.1 33.02 0)
 			(effects
 				(font
@@ -16793,7 +16831,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 165.1 33.02 0)
 			(effects
 				(font
@@ -16900,7 +16938,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 90.17 53.34 0)
 			(effects
 				(font
@@ -16909,7 +16947,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 90.17 53.34 0)
 			(effects
 				(font
@@ -17016,7 +17054,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 118.11 26.67 0)
 			(effects
 				(font
@@ -17025,7 +17063,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 118.11 26.67 0)
 			(effects
 				(font
@@ -17139,7 +17177,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 139.7 63.5 0)
 			(effects
 				(font
@@ -17204,7 +17242,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 224.79 270.51 0)
 			(effects
 				(font
@@ -17276,7 +17314,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 21.59 72.39 0)
 			(effects
 				(font
@@ -17332,7 +17370,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.vishay.com/doc?20035"
+		(property "Datasheet" "~"
 			(at 58.42 38.1 0)
 			(effects
 				(font
@@ -17341,7 +17379,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor, small symbol"
 			(at 58.42 38.1 0)
 			(effects
 				(font
@@ -17438,7 +17476,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/276/1/0734120110_RF_COAX_CONNECTORS-173239.pdf"
+		(property "Datasheet" " ~"
 			(at 109.22 250.19 0)
 			(effects
 				(font
@@ -17447,7 +17485,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
 			(at 109.22 250.19 0)
 			(effects
 				(font
@@ -17554,7 +17592,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 184.15 41.91 0)
 			(effects
 				(font
@@ -17563,7 +17601,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 184.15 41.91 0)
 			(effects
 				(font
@@ -17667,7 +17705,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Jumper, 3-pole, both open"
 			(at 322.58 34.29 0)
 			(effects
 				(font
@@ -17777,7 +17815,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/cx5r_KGM-3223198.pdf"
+		(property "Datasheet" "~"
 			(at 299.72 54.61 0)
 			(effects
 				(font
@@ -17786,7 +17824,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 299.72 54.61 0)
 			(effects
 				(font
@@ -18042,7 +18080,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 382.27 80.01 0)
 			(effects
 				(font
@@ -18051,7 +18089,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 382.27 80.01 0)
 			(effects
 				(font
@@ -18165,7 +18203,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 345.44 27.94 0)
 			(effects
 				(font
@@ -18231,7 +18269,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 138.43 256.54 0)
 			(effects
 				(font
@@ -18297,7 +18335,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V0\""
 			(at 224.79 237.49 0)
 			(effects
 				(font
@@ -18354,7 +18392,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
+		(property "Datasheet" "~"
 			(at 375.92 82.55 0)
 			(effects
 				(font
@@ -18363,7 +18401,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 375.92 82.55 0)
 			(effects
 				(font
@@ -18469,7 +18507,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_12-3003070.pdf"
+		(property "Datasheet" "~"
 			(at 57.15 182.88 0)
 			(effects
 				(font
@@ -18478,7 +18516,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 57.15 182.88 0)
 			(effects
 				(font
@@ -18575,7 +18613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 87.63 226.06 0)
 			(effects
 				(font
@@ -18584,7 +18622,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Inductor"
 			(at 87.63 226.06 0)
 			(effects
 				(font
@@ -18688,7 +18726,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 57.15 209.55 0)
 			(effects
 				(font
@@ -18754,7 +18792,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "SMD LoRaWAN module"
 			(at 345.44 72.39 0)
 			(effects
 				(font
