@@ -11785,8 +11785,8 @@
 				)
 			)
 		)
-		(property "Value" "MCP100-300D"
-			(at 174.498 59.436 0)
+		(property "Value" "MCP100T-300I/TT"
+			(at 176.276 59.436 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14111,7 +14111,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.mouser.de/datasheet/2/40/AVX_E_1004627-3313018.pdf"
 			(at 106.68 222.25 0)
 			(effects
 				(font
@@ -18587,21 +18587,19 @@
 		(fields_autoplaced yes)
 		(uuid "f26ddcaf-a6a9-4b80-b78f-69090eb92080")
 		(property "Reference" "L101"
-			(at 87.63 226.06 0)
+			(at 87.63 220.98 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "27n"
-			(at 87.63 226.06 0)
+			(at 87.63 223.52 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_0402_1005Metric_Pad0.77x0.64mm_HandSolder"
@@ -18659,6 +18657,15 @@
 			)
 		)
 		(property "Order Number" "81-LQG15HZ27NH02D"
+			(at 87.63 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 87.63 226.06 0)
 			(effects
 				(font
