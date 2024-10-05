@@ -22,8 +22,10 @@
 
 /* USER CODE BEGIN 0 */
 #include <string.h>
+#include <stdlib.h>
 
 #include "sys_app.h"
+
 /* USER CODE END 0 */
 
 UART_HandleTypeDef hlpuart1;
@@ -274,14 +276,62 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+static int32_t MX_USART1_GPS_GetLine(char *buffer, uint8_t *length, uint32_t timeout)
+{
+	uint8_t Temp;
+	uint32_t ReceivedByte = 0;
+	uint32_t Timeout_Temp = 0;
+
+	// Wait for the beginning of a new line
+	do
+	{
+		HAL_UART_Receive(&hlpuart1, &Temp, 1, 10);
+		Timeout_Temp += 10;
+
+		if (Timeout_Temp >= timeout)
+		{
+			return HAL_TIMEOUT;
+		}
+	} while (Temp != '$');
+
+	Timeout_Temp = 0;
+	buffer[ReceivedByte++] = Temp;
+
+	// Get the rest of the line
+	do
+	{
+		HAL_UART_Receive(&hlpuart1, &Temp, 1, 10);
+		Timeout_Temp += 10;
+
+		buffer[ReceivedByte++] = Temp;
+
+		if (Timeout_Temp >= timeout)
+		{
+			return HAL_TIMEOUT;
+		}
+	} while (Temp != '\n');
+
+	// Remove the line end
+	buffer[ReceivedByte - 1] = '\0';
+
+  return HAL_OK;
+}
+
 int32_t MX_USART1_GPS_Init(void)
 {
+	// Set the NMEA output fields
+	//	- Disable all fields
+	//	- Enable the GGA field
 	const char* PMTK314 = "$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n";
 	if (MX_USART1_GPS_SendCommand(PMTK314, strlen(PMTK314)) != HAL_OK)
 	{
 		return HAL_ERROR;
 	}
 
+	// Enter perodic standby mode
+	//	Type 2 -> Periodic standby mode
+	//	Run time -> 1000 ms
+	//	Sleep time -> 10000 ms
 	const char* PMTK225 = "$PMTK225,2,1000,10000,0,0*19\r\n";
 	if (MX_USART1_GPS_SendCommand(PMTK225, strlen(PMTK225)) != HAL_OK)
 	{
@@ -291,56 +341,45 @@ int32_t MX_USART1_GPS_Init(void)
 	return HAL_OK;
 }
 
-int32_t MX_USART1_GPS_SendCommand(const char* Command, uint16_t Length)
+int32_t MX_USART1_GPS_SendCommand(const char* command, uint16_t length)
 {
-	char ReceiveBuffer[256] = {0};
-	char* Start;
-	char* Token;
+	static char _UART_NMEA_MTK_Buffer[64];
+	uint8_t _UART_NMEA_MTK_Length;
 
-	if (HAL_UART_Transmit(&hlpuart1, (const uint8_t*)Command, Length, 100) != HAL_OK)
+	memset(_UART_NMEA_MTK_Buffer, 0, sizeof(_UART_NMEA_MTK_Buffer));
+
+ 	if (HAL_UART_Transmit(&hlpuart1, (const uint8_t*)command, length, 100) != HAL_OK)
 	{
 		return HAL_ERROR;
 	}
 
-	do {
-		memset(ReceiveBuffer, 0, sizeof(ReceiveBuffer));
-
-		HAL_UART_Receive(&hlpuart1, (uint8_t*)ReceiveBuffer, sizeof(ReceiveBuffer), 100);
-
-		Start = strstr(ReceiveBuffer, "PMTK");
-		if (Start != NULL) {
-			break;
-		}
-	} while(1);
-
-  APP_LOG(TS_OFF, VLEVEL_M, "Buffer: %s", Start);
-
-  // Fetch and discard the header
-  Token = strtok(Start, ",");
-  APP_LOG(TS_OFF, VLEVEL_M, "Header: %s\n\r", Token);
-  if (strstr(Token, "PMTK001") != NULL)
-  {
-  	// PMTK_ACK
-  	// Fetch and discard data packet
-    strtok(NULL, ",");
-
-    // Fetch the status code and the checksum
-    Token = strtok(NULL, ",");
-    APP_LOG(TS_OFF, VLEVEL_M, "Flag: %s\n\r", Token);
-
-    if (Token[0] != '3')
-    {
-      APP_LOG(TS_OFF, VLEVEL_M, "Error\n\r");
-    	return HAL_ERROR;
-    }
-  }
-  else if (strstr(Token, "PMTK010") != NULL)
-  {
-  	// PMTK_SYS_MSG
-  }
-  else
+  if (MX_USART1_GPS_GetLine(_UART_NMEA_MTK_Buffer, &_UART_NMEA_MTK_Length, 1000) != HAL_OK)
   {
   	return HAL_ERROR;
+  }
+
+  // Format: $PMTK001,314,3*36
+  if (strstr(_UART_NMEA_MTK_Buffer, "$PMTK") != NULL)
+  {
+  	static char* Token;
+  	char PacketType[4];
+  	char Ack[2];
+
+	  // Fetch the packet type
+  	Token = strtok(_UART_NMEA_MTK_Buffer, ",");
+	  memcpy(PacketType, &Token[5], strlen(Token));
+	  PacketType[3] = '\0';
+
+  	strtok(NULL, ",");
+
+	  // Fetch the acknowledge packet
+  	Token = strtok(NULL, "*");
+	  memcpy(Ack, Token, strlen(Token));
+
+	  if ((atoi(PacketType) != NMEA_PMTK_ACK) || (atoi(Ack) != 3))
+	  {
+	  	return HAL_ERROR;
+	  }
   }
 
 	return HAL_OK;
@@ -364,29 +403,58 @@ void MX_USART1_GPS_WakeUp(void)
   HAL_UARTEx_DisableStopMode(&hlpuart1);
 }
 
-int32_t MX_USART1_GPS_GetNMEA(char* p_LineBuffer, uint32_t Length)
+int32_t MX_USART1_GPS_Get(NMEA_GPS_t *gps, uint32_t timeout)
 {
-	uint8_t Temp;
-	uint32_t BytesReceived = 0;
+	static char _UART_NMEA_Buffer[80];
+	uint8_t Length;
+	int32_t Status;
 
-	if (Length == 0)
+	memset(_UART_NMEA_Buffer, 0, sizeof(_UART_NMEA_Buffer));
+
+	Status = MX_USART1_GPS_GetLine(_UART_NMEA_Buffer, &Length, 1000);
+	if (Status != HAL_OK)
 	{
 		return HAL_ERROR;
 	}
+  APP_LOG(TS_OFF, VLEVEL_M, "Message: %s\n\r", _UART_NMEA_Buffer);
 
-	memset(p_LineBuffer, 0, Length);
+	memset(gps, 0, sizeof(NMEA_GPS_t));
 
-	do
-	{
-		if (HAL_UART_Receive(&hlpuart1, &Temp, 1, 10) != HAL_OK)
-		{
-			return HAL_ERROR;
-		}
+  // Format: $GPGGA,174857.000,4932.1285,N,01046.6422,E,2,9,0.90,388.3,M,47.9,M,,*5E
+  if (strstr(_UART_NMEA_Buffer, "$GPGGA") != NULL)
+  {
+  	char* Token;
 
-		*p_LineBuffer++ = Temp;
-		BytesReceived++;
-	} while ((Temp != '\n') || (BytesReceived == Length));
+	  // Fetch and discard the header
+	  strtok(_UART_NMEA_Buffer, ",");
+
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.utc, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.lat, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(&gps->GPGGA.lat_dir, Token, 1);
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.lon, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(&gps->GPGGA.lon_dir, Token, 1);
+	  Token = strtok(NULL, ",");
+	  gps->GPGGA.quality = atoi(Token);
+	  Token = strtok(NULL, ",");
+	  gps->GPGGA.satellites = atoi(Token);
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.hdop, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.altitude, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(&gps->GPGGA.unit_altitude, Token, 1);
+	  Token = strtok(NULL, ",");
+	  memcpy(gps->GPGGA.geoid, Token, strlen(Token));
+	  Token = strtok(NULL, ",");
+	  memcpy(&gps->GPGGA.unit_geoid, Token, 1);
+  }
 
   return HAL_OK;
 }
+
 /* USER CODE END 1 */

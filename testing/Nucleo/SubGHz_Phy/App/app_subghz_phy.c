@@ -39,14 +39,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-typedef struct {
-	char utc[11];
-	char lat[10];
-	char lat_dir[2];
-	char lon[11];
-	char lon_dir[2];
-	uint8_t Quality;
-} GPS_GPGGA_t;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -70,7 +63,7 @@ static uint8_t APRS_Header[] = {'<', 0xFF, 0x01};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-static int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char* p_Message);
+static int32_t MX_SubGHz_Phy_APRS_Send(NMEA_GPS_t *position, char *challsign, char *message);
 static void MX_SubGHz_Phy_EnterSleep(void);
 /* USER CODE END PFP */
 
@@ -98,26 +91,12 @@ void MX_SubGHz_Phy_Init(void)
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST) || __HAL_RCC_GET_FLAG(RCC_FLAG_PINRST))
   {
     APP_LOG(TS_OFF, VLEVEL_M, "Device reset...\n\r");
-/*
-    do {
-      APP_LOG(TS_OFF, VLEVEL_M, "Initialize GPS module. Attempt %u\n\r", InitCounter);
-      InitCounter++;
-
-      if (InitCounter > 10)
-      {
-      	Error_Handler();
-      }
-    } while (MX_USART1_GPS_Init() != HAL_OK);
-*/
-    APP_LOG(TS_OFF, VLEVEL_M, "Initialization successful!\n\r");
-
-    for (uint8_t i = 0; i < 4; i++)
+    if (MX_USART1_GPS_Init() != HAL_OK)
     {
-      //HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_SET);
-      //HAL_Delay(100);
-      //HAL_GPIO_WritePin(GPIOB, LED1_Pin, GPIO_PIN_RESET);
-      //HAL_Delay(100);
+    	// TODO
     }
+
+    APP_LOG(TS_OFF, VLEVEL_M, "Initialization successful!\n\r");
 
     __HAL_RCC_CLEAR_RESET_FLAGS();
   }
@@ -134,11 +113,9 @@ void MX_SubGHz_Phy_Process(void)
 {
   /* USER CODE BEGIN MX_SubGHz_Phy_Process_1 */
 	int32_t Status;
-	char LineBuffer[128];
-	GPS_GPGGA_t GPGGA_Data;
+	NMEA_GPS_t GPS_Data;
 
-	memset(&GPGGA_Data, 0, sizeof(GPGGA_Data));
-
+/*
   APP_LOG(TS_OFF, VLEVEL_M, "Go\n\r");
 	uint8_t Buffer[] = {0x3C, 0xFF, 0x01, 0x44, 0x4F, 0x32, 0x44, 0x4B,
 											0x48, 0x2D, 0x37, 0x3E, 0x41, 0x50, 0x4C, 0x47,
@@ -148,42 +125,19 @@ void MX_SubGHz_Phy_Process(void)
 											0x65, 0x73, 0x74, 0x32};
 	SubghzApp_Transmit(Buffer, sizeof(Buffer));
   APP_LOG(TS_OFF, VLEVEL_M, "Done\n\r");
-	return;
-
-	Status = MX_USART1_GPS_GetNMEA(LineBuffer, sizeof(LineBuffer));
+*/
+	Status = MX_USART1_GPS_Get(&GPS_Data, 1000);
 	if (Status == HAL_OK)
 	{
-	  APP_LOG(TS_OFF, VLEVEL_M, "Message: %s\n\r", LineBuffer);
+		APP_LOG(TS_OFF, VLEVEL_M, "\tUTC: %s\n\r", GPS_Data.GPGGA.utc);
+		APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude: %s\n\r", GPS_Data.GPGGA.lat);
+		APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude direction: %c\n\r", GPS_Data.GPGGA.lat_dir);
+		APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude: %s\n\r", GPS_Data.GPGGA.lon);
+		APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude direction: %c\n\r", GPS_Data.GPGGA.lon_dir);
+		//MX_SubGHz_Phy_APRS_Send(&GPS_Data, APRS_Callsign, "Test123");
+		//HAL_Delay(100);
 
-	  // Format: $GPGGA,174857.000,4932.1285,N,01046.6422,E,2,9,0.90,388.3,M,47.9,M,,*5E
-	  if (strstr(LineBuffer, "$GPGGA") != NULL)
-	  {
-	  	char* Token;
-
-		  // Fetch and discard the header
-		  strtok(LineBuffer, ",");
-
-		  Token = strtok(NULL, ",");
-		  memcpy(&GPGGA_Data.utc, Token, strlen(Token));
-		  Token = strtok(NULL, ",");
-		  memcpy(&GPGGA_Data.lat, Token, strlen(Token));
-		  Token = strtok(NULL, ",");
-		  memcpy(&GPGGA_Data.lat_dir, Token, strlen(Token));
-		  Token = strtok(NULL, ",");
-		  memcpy(&GPGGA_Data.lon, Token, strlen(Token));
-		  Token = strtok(NULL, ",");
-		  memcpy(&GPGGA_Data.lon_dir, Token, strlen(Token));
-
-		  APP_LOG(TS_OFF, VLEVEL_M, "\tUTC: %s\n\r", GPGGA_Data.utc);
-		  APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude: %s\n\r", GPGGA_Data.lat);
-		  APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude direction: %s\n\r", GPGGA_Data.lat_dir);
-		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude: %s\n\r", GPGGA_Data.lon);
-		  APP_LOG(TS_OFF, VLEVEL_M, "\tLongitude direction: %s\n\r", GPGGA_Data.lon_dir);
-		  MX_SubGHz_Phy_APRS_Send(&GPGGA_Data, APRS_Callsign, "Test123");
-		  HAL_Delay(100);
-
-		  MX_SubGHz_Phy_EnterSleep();
-	  }
+		//MX_SubGHz_Phy_EnterSleep();
 	}
 
   /* USER CODE END MX_SubGHz_Phy_Process_1 */
@@ -218,15 +172,15 @@ void MX_SubGHz_Phy_EnterSleep(void)
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 }
 
-int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char* p_Message)
+int32_t MX_SubGHz_Phy_APRS_Send(NMEA_GPS_t *gps, char *challsign, char *message)
 {
 	uint8_t TotalLength = 0;
 
 	memcpy(&APRS_TransmitBuffer[TotalLength], APRS_Header, sizeof(APRS_Header));
 	TotalLength += sizeof(APRS_Header);
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Challsign, strlen(p_Challsign));
-	TotalLength += strlen(p_Challsign);
+	memcpy(&APRS_TransmitBuffer[TotalLength], challsign, strlen(challsign));
+	TotalLength += strlen(challsign);
 
 	APRS_TransmitBuffer[TotalLength] = '>';
 	TotalLength += 1;
@@ -240,25 +194,25 @@ int32_t MX_SubGHz_Phy_APRS_Send(GPS_GPGGA_t* p_Position, char* p_Challsign, char
 	APRS_TransmitBuffer[TotalLength] = '!';
 	TotalLength += 1;
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Position->lat, 7);
+	memcpy(&APRS_TransmitBuffer[TotalLength], gps->GPGGA.lat, 7);
 	TotalLength += 7;
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Position->lat_dir, 1);
+	memcpy(&APRS_TransmitBuffer[TotalLength], &gps->GPGGA.lat_dir, 1);
 	TotalLength += 1;
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Position->lon, 8);
+	memcpy(&APRS_TransmitBuffer[TotalLength], gps->GPGGA.lon, 8);
 	TotalLength += 8;
 
-	memcpy(&APRS_TransmitBuffer[TotalLength], p_Position->lon_dir, 1);
+	memcpy(&APRS_TransmitBuffer[TotalLength], &gps->GPGGA.lon_dir, 1);
 	TotalLength += 1;
 
-	if (p_Message != NULL)
+	if (message != NULL)
 	{
 		APRS_TransmitBuffer[TotalLength] = '&';
 		TotalLength += 1;
 
-		memcpy(&APRS_TransmitBuffer[TotalLength], p_Message, strlen(p_Message));
-		TotalLength += strlen(p_Message);
+		memcpy(&APRS_TransmitBuffer[TotalLength], message, strlen(message));
+		TotalLength += strlen(message);
 	}
 
 	return SubghzApp_Transmit(APRS_TransmitBuffer, TotalLength);
