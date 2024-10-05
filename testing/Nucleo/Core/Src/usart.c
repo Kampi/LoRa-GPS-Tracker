@@ -328,16 +328,24 @@ int32_t MX_USART1_GPS_Init(void)
 		return HAL_ERROR;
 	}
 
-	// Enter perodic standby mode
-	//	Type 2 -> Periodic standby mode
-	//	Run time -> 1000 ms
-	//	Sleep time -> 10000 ms
-	const char* PMTK225 = "$PMTK225,2,1000,10000,0,0*19\r\n";
-	if (MX_USART1_GPS_SendCommand(PMTK225, strlen(PMTK225)) != HAL_OK)
+	/*
+	//
+	const char* PMTK223 = "$PMTK223,1,25,180000,60000*38\r\n";
+	if (MX_USART1_GPS_SendCommand(PMTK223, strlen(PMTK223)) != HAL_OK)
 	{
 		return HAL_ERROR;
 	}
 
+	// Enter perodic standby mode
+	//	Type 2 -> Periodic standby mode
+	//	Run time ->  ms
+	//	Sleep time ->  ms
+	const char* PMTK225 = "$PMTK225,2,3000,12000,18000,72000*15\r\n";
+	if (MX_USART1_GPS_SendCommand(PMTK225, strlen(PMTK225)) != HAL_OK)
+	{
+		return HAL_ERROR;
+	}
+*/
 	return HAL_OK;
 }
 
@@ -452,9 +460,11 @@ int32_t MX_USART1_GPS_Get(NMEA_GPS_t *gps, uint32_t timeout)
 	  memcpy(gps->GPGGA.geoid, Token, strlen(Token));
 	  Token = strtok(NULL, ",");
 	  memcpy(&gps->GPGGA.unit_geoid, Token, 1);
+
+	  return HAL_OK;
   }
 
-  return HAL_OK;
+  return HAL_ERROR;
 }
 
 /* USER CODE END 1 */

@@ -25,9 +25,10 @@
 #include "stm32_seq.h"
 
 /* USER CODE BEGIN Includes */
-#include "main.h"
-#include "usart.h"
 #include "rtc.h"
+#include "main.h"
+#include "gpio.h"
+#include "usart.h"
 #include "app_version.h"
 #include "stm32wlxx_hal_rcc.h"
 /* USER CODE END Includes */
@@ -93,10 +94,12 @@ void MX_SubGHz_Phy_Init(void)
     APP_LOG(TS_OFF, VLEVEL_M, "Device reset...\n\r");
     if (MX_USART1_GPS_Init() != HAL_OK)
     {
-    	// TODO
+  		MX_GPIO_RedFlash(4);
+      Error_Handler();
     }
 
     APP_LOG(TS_OFF, VLEVEL_M, "Initialization successful!\n\r");
+		MX_GPIO_GreenFlash();
 
     __HAL_RCC_CLEAR_RESET_FLAGS();
   }
@@ -127,7 +130,7 @@ void MX_SubGHz_Phy_Process(void)
   APP_LOG(TS_OFF, VLEVEL_M, "Done\n\r");
 */
 	Status = MX_USART1_GPS_Get(&GPS_Data, 1000);
-	if (Status == HAL_OK)
+	if ((Status == HAL_OK) && (GPS_Data.GPGGA.quality == 1))
 	{
 		APP_LOG(TS_OFF, VLEVEL_M, "\tUTC: %s\n\r", GPS_Data.GPGGA.utc);
 		APP_LOG(TS_OFF, VLEVEL_M, "\tLatitude: %s\n\r", GPS_Data.GPGGA.lat);
@@ -137,7 +140,11 @@ void MX_SubGHz_Phy_Process(void)
 		//MX_SubGHz_Phy_APRS_Send(&GPS_Data, APRS_Callsign, "Test123");
 		//HAL_Delay(100);
 
-		//MX_SubGHz_Phy_EnterSleep();
+		MX_SubGHz_Phy_EnterSleep();
+	}
+	else
+	{
+		MX_GPIO_RedFlash(1);
 	}
 
   /* USER CODE END MX_SubGHz_Phy_Process_1 */
