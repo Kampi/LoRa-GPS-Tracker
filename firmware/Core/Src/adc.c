@@ -85,10 +85,10 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     /**ADC GPIO Configuration
     PB3     ------> ADC_IN2
     */
-    GPIO_InitStruct.Pin = BATTERY_Pin;
+    GPIO_InitStruct.Pin = V_BAT_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(BATTERY_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(V_BAT_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN ADC_MspInit 1 */
 
@@ -110,7 +110,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     /**ADC GPIO Configuration
     PB3     ------> ADC_IN2
     */
-    HAL_GPIO_DeInit(BATTERY_GPIO_Port, BATTERY_Pin);
+    HAL_GPIO_DeInit(V_BAT_GPIO_Port, V_BAT_Pin);
 
   /* USER CODE BEGIN ADC_MspDeInit 1 */
 
