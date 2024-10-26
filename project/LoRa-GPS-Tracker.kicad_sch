@@ -11144,7 +11144,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP0610K"
+		(property "Value" "BSS84"
 			(at 394.97 135.89 0)
 			(effects
 				(font
@@ -11164,7 +11164,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf"
+		(property "Datasheet" "https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf"
 			(at 388.62 134.62 0)
 			(effects
 				(font
@@ -11183,7 +11183,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr." "Vishay Semiconductors"
+		(property "Mfr." "onsemi / Fairchild"
 			(at 388.62 134.62 0)
 			(effects
 				(font
@@ -11192,7 +11192,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr. No." "TP0610K-T1-GE3"
+		(property "Mfr. No." "BSS84"
 			(at 388.62 134.62 0)
 			(effects
 				(font
@@ -11210,7 +11210,25 @@
 				(hide yes)
 			)
 		)
-		(property "Order Number" "781-TP0610K-T1-GE3"
+		(property "Order Number" "512-BSS84"
+			(at 388.62 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order No." ""
+			(at 388.62 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 388.62 134.62 0)
 			(effects
 				(font
@@ -12293,7 +12311,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP0610K"
+		(property "Value" "BSS84"
 			(at 57.15 218.44 0)
 			(effects
 				(font
@@ -12313,7 +12331,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf"
+		(property "Datasheet" "https://www.mouser.de/datasheet/2/308/1/BSS84_D-2310226.pdf"
 			(at 50.8 217.17 0)
 			(effects
 				(font
@@ -12332,7 +12350,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr." "Vishay Semiconductors"
+		(property "Mfr." "onsemi / Fairchild"
 			(at 50.8 217.17 0)
 			(effects
 				(font
@@ -12341,7 +12359,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr. No." "TP0610K-T1-GE3"
+		(property "Mfr. No." "BSS84"
 			(at 50.8 217.17 0)
 			(effects
 				(font
@@ -12359,7 +12377,25 @@
 				(hide yes)
 			)
 		)
-		(property "Order Number" "781-TP0610K-T1-GE3"
+		(property "Order Number" "512-BSS84"
+			(at 50.8 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order No." ""
+			(at 50.8 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CONFIG" ""
 			(at 50.8 217.17 0)
 			(effects
 				(font
@@ -13362,7 +13398,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -13371,7 +13407,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf"
+		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -13398,7 +13434,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr. No." "CRCW06035K10FKEA"
+		(property "Mfr. No." "RC0402JR-075K1L"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -13416,7 +13452,7 @@
 				(hide yes)
 			)
 		)
-		(property "Order Number" "71-CRCW0603-5.1K-E3"
+		(property "Order Number" "603-RC0402JR-075K1L"
 			(at 58.42 40.64 0)
 			(effects
 				(font
@@ -19157,7 +19193,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 58.42 38.1 0)
 			(effects
 				(font
@@ -19166,7 +19202,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/PYu_RT_1_to_0_01_RoHS_L_15-3461507.pdf"
+		(property "Datasheet" "https://www.mouser.de/datasheet/2/447/YAGEO_PYu_RC_Group_51_RoHS_L_12-3313492.pdf"
 			(at 58.42 38.1 0)
 			(effects
 				(font
@@ -19193,7 +19229,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mfr. No." "CRCW06035K10FKEA"
+		(property "Mfr. No." "RC0402JR-075K1L"
 			(at 58.42 38.1 0)
 			(effects
 				(font
@@ -19211,7 +19247,7 @@
 				(hide yes)
 			)
 		)
-		(property "Order Number" "71-CRCW0603-5.1K-E3"
+		(property "Order Number" "603-RC0402JR-075K1L"
 			(at 58.42 38.1 0)
 			(effects
 				(font
