@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "LoRa-GPS-Tracker")
-		(date "2024-02-11")
-		(rev "1")
+		(date "2024-10-26")
+		(rev "2")
 		(company "Kampis-Elektroecke")
 		(comment 4 "Author: Ing. Daniel Kampert")
 	)
@@ -4201,7 +4201,7 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "M"
-				(at -11.43 26.67 0)
+				(at -12.065 26.67 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4209,7 +4209,7 @@
 				)
 			)
 			(property "Value" "RAK3172"
-				(at -8.89 -26.67 0)
+				(at -8.255 -26.67 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4294,9 +4294,9 @@
 					)
 				)
 				(pin power_in line
-					(at -5.08 -27.94 90)
-					(length 2.54)
-					(name "VSS"
+					(at 0 -27.94 90)
+					(length 2.54) hide
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4402,9 +4402,9 @@
 					)
 				)
 				(pin power_in line
-					(at -2.54 -27.94 90)
-					(length 2.54)
-					(name "VSS"
+					(at 0 -27.94 90)
+					(length 2.54) hide
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4422,7 +4422,7 @@
 				(pin power_in line
 					(at 0 -27.94 90)
 					(length 2.54)
-					(name "VSS"
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4528,9 +4528,9 @@
 					)
 				)
 				(pin power_in line
-					(at 2.54 -27.94 90)
-					(length 2.54)
-					(name "VSS"
+					(at 0 -27.94 90)
+					(length 2.54) hide
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4548,7 +4548,7 @@
 				(pin input line
 					(at 0 27.94 270)
 					(length 2.54)
-					(name "VDD"
+					(name "V_{DD}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4618,9 +4618,9 @@
 					)
 				)
 				(pin power_in line
-					(at 5.08 -27.94 90)
-					(length 2.54)
-					(name "VSS"
+					(at 0 -27.94 90)
+					(length 2.54) hide
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4692,7 +4692,7 @@
 				(pin input line
 					(at 15.24 6.35 180)
 					(length 2.54)
-					(name "ADC1"
+					(name "ADC2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4710,7 +4710,7 @@
 				(pin input line
 					(at 15.24 8.89 180)
 					(length 2.54)
-					(name "ADC2"
+					(name "ADC1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4989,7 +4989,7 @@
 				(pin input line
 					(at 17.78 5.08 180)
 					(length 2.54)
-					(name "RF_IN"
+					(name "RF-IN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5043,7 +5043,7 @@
 				(pin power_out line
 					(at 5.08 15.24 270)
 					(length 2.54)
-					(name "VCC_RF"
+					(name "V_{RF}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5051,24 +5051,6 @@
 						)
 					)
 					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -7.62 180)
-					(length 2.54) hide
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5105,24 +5087,6 @@
 						)
 					)
 					(number "17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 15.24 -10.16 180)
-					(length 2.54) hide
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "18"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5205,7 +5169,7 @@
 				(pin power_in line
 					(at 0 15.24 270)
 					(length 2.54)
-					(name "V_BAT"
+					(name "V_{BAT}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5220,28 +5184,10 @@
 						)
 					)
 				)
-				(pin no_connect line
-					(at 15.24 -5.08 180)
-					(length 2.54) hide
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin power_in line
 					(at -2.54 15.24 270)
 					(length 2.54)
-					(name "VCC"
+					(name "V_{CC}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6666,18 +6612,6 @@
 		(uuid "00fa5e9e-872c-465e-a779-eea1a4ed683d")
 	)
 	(junction
-		(at 342.9 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0d410827-8720-4f10-ab85-88291f26fcf9")
-	)
-	(junction
-		(at 347.98 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "139472ff-e28c-45db-bdfa-9845be37d113")
-	)
-	(junction
 		(at 345.44 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6766,12 +6700,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "96b28d41-a15a-44d7-8d1a-00471c10c3b2")
-	)
-	(junction
-		(at 345.44 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "972a6028-050b-4e10-8908-c0945f40aa35")
 	)
 	(junction
 		(at 391.16 158.75)
@@ -7037,7 +6965,7 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 101.6) (xy 345.44 102.87)
+			(xy 345.44 100.33) (xy 345.44 102.87)
 		)
 		(stroke
 			(width 0)
@@ -7197,7 +7125,7 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 257.81) (xy 34.29 257.81)
+			(xy 34.29 255.27) (xy 38.1 255.27)
 		)
 		(stroke
 			(width 0)
@@ -7224,16 +7152,6 @@
 			(type default)
 		)
 		(uuid "151d727d-2ba6-4bdf-9eb5-ed03c56a44a8")
-	)
-	(wire
-		(pts
-			(xy 342.9 101.6) (xy 345.44 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15ec8e51-a318-4111-8e58-f857c8765157")
 	)
 	(polyline
 		(pts
@@ -7404,16 +7322,6 @@
 			(type default)
 		)
 		(uuid "26fb00c7-738e-472f-854c-97f4a2f8abde")
-	)
-	(wire
-		(pts
-			(xy 340.36 101.6) (xy 342.9 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2730c868-d20d-46d9-8de9-9c625c6a0bc1")
 	)
 	(wire
 		(pts
@@ -7637,7 +7545,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 257.81) (xy 26.67 257.81)
+			(xy 25.4 255.27) (xy 26.67 255.27)
 		)
 		(stroke
 			(width 0)
@@ -7667,16 +7575,6 @@
 	)
 	(wire
 		(pts
-			(xy 350.52 101.6) (xy 347.98 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "39695f1a-ccd1-464c-b62f-9d6a790a8536")
-	)
-	(wire
-		(pts
 			(xy 138.43 255.27) (xy 138.43 256.54)
 		)
 		(stroke
@@ -7697,7 +7595,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 250.19) (xy 26.67 250.19)
+			(xy 25.4 252.73) (xy 26.67 252.73)
 		)
 		(stroke
 			(width 0)
@@ -7734,16 +7632,6 @@
 			(type default)
 		)
 		(uuid "3b8f6b4c-aef3-432b-abcf-67d8c52198d8")
-	)
-	(wire
-		(pts
-			(xy 345.44 100.33) (xy 345.44 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c441696-6408-444d-aff3-27c630a944eb")
 	)
 	(wire
 		(pts
@@ -8037,16 +7925,6 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 100.33) (xy 342.9 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "58b86684-18b4-4212-aec0-d0eed1ad3374")
-	)
-	(wire
-		(pts
 			(xy 63.5 39.37) (xy 63.5 40.64)
 		)
 		(stroke
@@ -8245,16 +8123,6 @@
 		)
 		(uuid "67d98e40-0df7-4132-8547-b2991758a1f9")
 	)
-	(wire
-		(pts
-			(xy 350.52 100.33) (xy 350.52 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "685a39c3-6e72-4542-9e1d-6357409d8729")
-	)
 	(polyline
 		(pts
 			(xy 209.55 283.21) (xy 254 283.21)
@@ -8367,7 +8235,7 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 250.19) (xy 35.56 250.19)
+			(xy 34.29 252.73) (xy 38.1 252.73)
 		)
 		(stroke
 			(width 0)
@@ -8457,16 +8325,6 @@
 	)
 	(wire
 		(pts
-			(xy 347.98 100.33) (xy 347.98 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7938bbf9-d910-40d1-a4c4-b8b77cf4ce69")
-	)
-	(wire
-		(pts
 			(xy 383.54 158.75) (xy 383.54 161.29)
 		)
 		(stroke
@@ -8484,26 +8342,6 @@
 			(type default)
 		)
 		(uuid "79945778-db98-40aa-bf12-eb27bddd4e10")
-	)
-	(wire
-		(pts
-			(xy 38.1 255.27) (xy 35.56 255.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79a55c1c-22b7-4b4a-bd0a-ffcd2fbb4f9d")
-	)
-	(wire
-		(pts
-			(xy 340.36 100.33) (xy 340.36 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b98ef29-43ae-47e9-9801-dab1ae51395e")
 	)
 	(wire
 		(pts
@@ -8687,26 +8525,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 250.19) (xy 35.56 252.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c36373d-e59e-4266-b458-768571a8aefb")
-	)
-	(wire
-		(pts
-			(xy 35.56 252.73) (xy 38.1 252.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d6b1b08-608c-4659-86ad-bf27a8e46edc")
-	)
-	(wire
-		(pts
 			(xy 184.15 35.56) (xy 195.58 35.56)
 		)
 		(stroke
@@ -8877,16 +8695,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 255.27) (xy 35.56 257.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9cc25117-b57f-4fd7-aa7e-fb79ecea450e")
-	)
-	(wire
-		(pts
 			(xy 45.72 48.26) (xy 46.99 48.26)
 		)
 		(stroke
@@ -8894,16 +8702,6 @@
 			(type default)
 		)
 		(uuid "9d64e60f-2494-4cbe-b0db-f1d09080140d")
-	)
-	(wire
-		(pts
-			(xy 347.98 101.6) (xy 345.44 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9eda98c2-04f4-4c55-9933-4906cb554b9f")
 	)
 	(wire
 		(pts
@@ -9971,7 +9769,7 @@
 		(uuid "376386f2-cda9-4afc-89b8-12fab11c22b7")
 	)
 	(label "Rx_GNSS"
-		(at 25.4 257.81 180)
+		(at 25.4 255.27 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10202,7 +10000,7 @@
 		(uuid "b51365ab-d5a6-4201-aa0e-636c576788a8")
 	)
 	(label "Tx_GNSS"
-		(at 25.4 250.19 180)
+		(at 25.4 252.73 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12424,7 +12222,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 30.48 257.81 90)
+		(at 30.48 255.27 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12433,7 +12231,7 @@
 		(fields_autoplaced yes)
 		(uuid "3d0f0b75-f7d0-44c4-9202-ce05949a3c1c")
 		(property "Reference" "R102"
-			(at 30.48 261.62 90)
+			(at 30.48 259.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12441,7 +12239,7 @@
 			)
 		)
 		(property "Value" "0R"
-			(at 30.48 264.16 90)
+			(at 30.48 261.62 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12449,7 +12247,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 30.48 259.588 90)
+			(at 30.48 257.048 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12458,7 +12256,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/doc?28773"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12467,7 +12265,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12476,7 +12274,7 @@
 			)
 		)
 		(property "Mfr." "Vishay / Dale"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12485,7 +12283,7 @@
 			)
 		)
 		(property "Mfr. No." "CRCW04020000Z0EDC"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12494,7 +12292,7 @@
 			)
 		)
 		(property "Distributor" "Mouser"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12503,7 +12301,7 @@
 			)
 		)
 		(property "Order Number" "71-CRCW04020000Z0EDC"
-			(at 30.48 257.81 0)
+			(at 30.48 255.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13214,6 +13012,15 @@
 			)
 		)
 		(property "CONFIG" ""
+			(at 172.72 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order No." ""
 			(at 172.72 50.8 0)
 			(effects
 				(font
@@ -14676,6 +14483,15 @@
 			)
 		)
 		(property "CONFIG" ""
+			(at 102.87 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order No." ""
 			(at 102.87 35.56 0)
 			(effects
 				(font
@@ -16190,7 +16006,7 @@
 		(fields_autoplaced yes)
 		(uuid "8702d8e6-9ab9-4a3c-9b4f-842f338b15c0")
 		(property "Reference" "X103"
-			(at 147.32 21.59 90)
+			(at 147.32 21.5899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16199,7 +16015,7 @@
 			)
 		)
 		(property "Value" "BATTERY"
-			(at 147.32 24.13 90)
+			(at 147.32 24.1299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16756,7 +16572,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 30.48 250.19 90)
+		(at 30.48 252.73 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16765,14 +16581,6 @@
 		(fields_autoplaced yes)
 		(uuid "8d9e5078-a057-4e7d-90db-51b0326b0b97")
 		(property "Reference" "R101"
-			(at 30.48 243.84 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0R"
 			(at 30.48 246.38 90)
 			(effects
 				(font
@@ -16780,8 +16588,16 @@
 				)
 			)
 		)
+		(property "Value" "0R"
+			(at 30.48 248.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 30.48 251.968 90)
+			(at 30.48 254.508 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16790,7 +16606,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/doc?28773"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16799,7 +16615,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16808,7 +16624,7 @@
 			)
 		)
 		(property "Mfr." "Vishay / Dale"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16817,7 +16633,7 @@
 			)
 		)
 		(property "Mfr. No." "CRCW04020000Z0EDC"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16826,7 +16642,7 @@
 			)
 		)
 		(property "Distributor" "Mouser"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16835,7 +16651,7 @@
 			)
 		)
 		(property "Order Number" "71-CRCW04020000Z0EDC"
-			(at 30.48 250.19 0)
+			(at 30.48 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19759,7 +19575,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Standalone GPS/A-GPS receiver module, built-in LNA, -165dBm sensitivity, 2.8-4.3V, SMD"
 			(at 55.88 255.27 0)
 			(effects
 				(font
@@ -19813,6 +19629,15 @@
 				(hide yes)
 			)
 		)
+		(property "Order No." ""
+			(at 55.88 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2f35447d-4363-44f5-b0d6-7d2bf60b074f")
 		)
@@ -19831,17 +19656,11 @@
 		(pin "14"
 			(uuid "7c90a3a8-673e-490f-ab98-98e72c99cabe")
 		)
-		(pin "15"
-			(uuid "9fe3bc58-76fe-4fff-8b3b-4cb6dc13b095")
-		)
 		(pin "16"
 			(uuid "84e5e08a-2896-443c-95c8-f36d3ec4f80c")
 		)
 		(pin "17"
 			(uuid "0844aff4-e707-45a9-893f-3d4bf1750392")
-		)
-		(pin "18"
-			(uuid "b62e417a-0469-43d5-84b9-0006705ee5fb")
 		)
 		(pin "2"
 			(uuid "e042d765-3bdf-4fe9-94f5-fbfc3d2475ec")
@@ -19857,9 +19676,6 @@
 		)
 		(pin "6"
 			(uuid "79a8f828-56a5-4e59-b5b7-4052c868b300")
-		)
-		(pin "7"
-			(uuid "3efdcd86-d5e1-4f49-aecc-54c94607d8b9")
 		)
 		(pin "8"
 			(uuid "62e8100b-db42-459d-a971-cfe8ba65b9da")
@@ -20677,6 +20493,15 @@
 			)
 		)
 		(property "CONFIG" ""
+			(at 345.44 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Order No." ""
 			(at 345.44 72.39 0)
 			(effects
 				(font
